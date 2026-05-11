@@ -430,6 +430,184 @@
 
   .no-wrong { color: #888; font-size: 14px; padding: 40px 0; text-align: center; }
 
+
+
+  /* ── 문제 선택 화면 ── */
+
+  #select-screen {
+
+    display: none;
+
+    flex-direction: column;
+
+    min-height: 60vh;
+
+    padding-top: 8px;
+
+  }
+
+  .select-title {
+
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 8px;
+
+    line-height: 1.2;
+
+  }
+
+  .select-sub {
+
+    font-size: 13px;
+
+    color: #888;
+
+    margin-bottom: 36px;
+
+  }
+
+  .chapter-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+
+    margin-bottom: 40px;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+  }
+
+  .chapter-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 16px 20px;
+
+    border-bottom: 1px solid #f0f0f0;
+
+    background: #fff;
+
+    transition: background 0.12s;
+
+  }
+
+  .chapter-row:last-child { border-bottom: none; }
+
+  .chapter-row.disabled-chapter { opacity: 0.38; }
+
+  .chapter-info { display: flex; flex-direction: column; gap: 2px; }
+
+  .chapter-name { font-size: 15px; font-weight: 600; }
+
+  .chapter-count { font-size: 12px; color: #aaa; }
+
+  /* iOS toggle switch */
+
+  .toggle-wrap { flex-shrink: 0; }
+
+  .ios-toggle {
+
+    position: relative;
+
+    display: inline-block;
+
+    width: 51px;
+
+    height: 31px;
+
+  }
+
+  .ios-toggle input { opacity: 0; width: 0; height: 0; }
+
+  .ios-slider {
+
+    position: absolute;
+
+    cursor: pointer;
+
+    top: 0; left: 0; right: 0; bottom: 0;
+
+    background: #e5e5ea;
+
+    border-radius: 31px;
+
+    transition: background 0.22s;
+
+  }
+
+  .ios-slider::before {
+
+    content: '';
+
+    position: absolute;
+
+    height: 27px; width: 27px;
+
+    left: 2px; bottom: 2px;
+
+    background: #fff;
+
+    border-radius: 50%;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.22);
+
+    transition: transform 0.22s cubic-bezier(.4,1.4,.6,1);
+
+  }
+
+  .ios-toggle input:checked + .ios-slider { background: #34c759; }
+
+  .ios-toggle input:checked + .ios-slider::before { transform: translateX(20px); }
+
+  .ios-toggle input:disabled + .ios-slider { cursor: not-allowed; }
+
+  .select-actions {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    align-items: flex-start;
+
+  }
+
+  .select-hint {
+
+    font-size: 12px;
+
+    color: #bbb;
+
+    margin-bottom: 4px;
+
+  }
+
+  .btn-go {
+
+    background: #000; color: #fff; border: none; border-radius: 4px;
+
+    padding: 14px 40px; font-size: 15px; font-family: inherit; cursor: pointer;
+
+  }
+
+  .btn-go:disabled { background: #ccc; cursor: not-allowed; }
+
 </style>
 
 </head>
@@ -454,8 +632,25 @@
 
     </div>
 
-    <button class="btn-start" onclick="startQuiz()">테스트 시작하기</button>
+    <button class="btn-start" onclick="goToSelect()">문제 선택하기</button>
 
+  </div>
+
+
+
+  <!-- 문제 선택 화면 -->
+
+  <div id="select-screen">
+
+    <div class="select-title">문제 선택</div>
+
+    <div class="select-sub">풀고 싶은 장을 켜고 시작하세요.</div>
+
+    <div class="chapter-list" id="chapter-list"></div>
+    <div class="select-actions">
+      <div class="select-hint" id="select-hint"></div>
+      <button class="btn-go" id="btn-go" onclick="startQuiz()">시작하기</button>
+    </div>
   </div>
 
 
@@ -600,89 +795,157 @@
 
 <script>
 
-const QUESTIONS_RAW = [
+// ── 문제 데이터 ──────────────────────────────────────────────
 
-  { q: "기계어에 가까운 프로그래밍 언어를 (   )라 부른다.", a: "저급언어"},
-
-  { q: "기계어를 사람이 읽을 수 있는 문자 형태로 바꿔놓은 프로그래밍 언어는 (   )이다", a: "어셈블리어"},
-
-  { q: "소스 코드를 컴퓨터가 실행할 수 있는 기계어로 번역하여 실행 파일을 만든 후 한꺼번에 실행하는 형태를 (   ) 방식이라 부른다.", a: "컴파일"},
-
-  { q: "소스 코드를 한 번에 한 행씩 실행하는 것을 (   ) 방식이라 부른다.", a: "인터프리터"},
-
-  { q: "(   ) 방식의 장점은 실행 전에 소스 코드의 오류를 발견하고 최적화된 코드를 만들 수 있다는 것이다.", a: "컴파일"},
-
-  { q: "(   )은 서로 다른 운영체제에서도 동일한 작업환경을 만들어 준다.", a: "가상머신"},
-
-  { q: "자바를 사용하기 위해 설치하는 가상머신을 (   )이라 부른다.", a: "JVM"},
-
-  { q: "컴퓨터가 이해할 수 있는 언어로 숫자로만 이루어진 언어를 (   )라 부른다.", a: "기계어"},
-
-  { q: "변수와 함수를 하나로 묶어서 편리하게 처리하는 언어를 (   ) 언어라 부른다.", a: "객체지향"},
-
-  { q: "소스 코드에서 오류를 수정하는 작업을 (   )이라 부른다.", a: "디버깅"},
-
-  { q: "문법에 맞지 않는 코드로 인하여 발생하는 오류를 (   )라 부른다.", a: "문법오류"},
-
-  { q: "컴파일했는데 실행 파일이 작동하지 않는 오류를 (   )라 부른다.", a: "실행 시간 오류"},
-
-  { q: "소스 코드에 문법적인 오류는 없지만 원하는 결과가 나오지 않는 오류를 (   )라 부른다.", a: "논리 오류"},
-
-  { q: "웹 시스템은 (   ) 구조로 되어 있다.", a: ["클라이언트 서버" , "클라이언트-서버"]},
-
-  { q: "죽지 않고 계속 살아있는 소프트웨어를 (   )이라 부른다. ", a: "데몬"},
-
-  { q: "특정 위치에 링크를 걸어 다른 문서와 연결하는 기능을 (   )라 부른다.", a: "하이퍼텍스트"},
-
-  { q: "태그를 사용하여 데이터가 가지는 속성을 표기하는 언어를 (   ) 언어라 부른다.", a: "마크업"},
-
-  { q: "웹 데몬과 응용 프로그램을 연결하여 인터페이스로 작동하는 소프트웨어를 (   )라 부른다.", a: "CGI"},
-
-  { q: "아파치 웹 데몬이 제공하는 스크립트를 (   )라 부른다.", a: "PHP"},
-
-  { q: "웹 데몬의 종류와 상관없이 사용할 수 있는 스크립트가 (   )이다.", a: "JSP"},
-
-  { q: "반정형 데이터를 구성하는 마크업 언어가 (   )이다.", a: "XML"},
-
-  { q: "전 세계에서 문서 표준처럼 자리 잡은 어도비의 문서 포맷은 (   )이다.", a: "PDF"},
-
-  { q: "데이터의 의미나 속성을 규정하는 데이터를 (   )라 부른다.", a: "메타데이터"},
-
-  { q: "HTML의 한계를 극복하여 멀티미디어 재생을 지원하는 마크업 언어가 (   )이다.", a: "HTML5"},
-
-  { q: "멀티미디어 지원, 그래픽 지원, 양방향 소켓 통신을 지원하는 마크업 언어가 (   )이다.", a: "HTML5"},
-
-  { q: "웹 페이지의 3대 구성 요소 중 책의 본문에 해당하는 것은 (   )이다.", a: "HTML"},
-
-  { q: "웹 페이지의 3대 구성 요소 중 문서의 출력 모양을 결정하는 것은 (   )이다.", a: "CSS"},
-
-  { q: "웹 페이지의 3대 구성 요소 중 문서에서 동적으로 변하는 부분을 만드는 언어는 (   )이다", a: "자바스크립트"},
-
-  { q: "HTML 태그 중 문단을 구분하는 태그는 < >이다.", a: "p"},
-
-  { q: "HTML 태그 중 글자를 굵게 표시하는 태그는 < >이다.", a: "B"},
-
-  { q: "HTML 태그 중 글자를 기울여 표시하는 태그는 < >이다.", a: "I"},
-
-  { q: "HTML 태그 중 글자에 밑줄을 표시하는 태그는 < >이다.", a: "U"},
-
-  { q: "HTML 태그 중 글자를 위첨자로 표시하는 태그는 <>이다. ", a: "SUP"},
-
-  { q: "HTML 태그 중 글자를 아래첨자로 표시하는 태그는 < >이다.", a: "SUB"},
-
-  { q: "HTML 태그 중 줄바꿈하는 태그는 < >이다.", a: "BR"},
-
-  { q: "HTML 태그 중 수평선을 표시하는 태그는 < >이다.", a: "HR"},
-
-  { q: "HTML 태그 중 표의 한 줄을 지정하는 태그는 < >이다. ", a: "TR"},
-
-  { q: "HTML 태그 중 표의 한 칸을 지정하는 태그는 < >이다.", a: "TD"},
-
-  { q: "<FONT> 태그 옵션 중에서 폰트 종류를 지정하는 옵션은 (   )이다. ", a: "face"},
-
+const ALL_CHAPTERS = [
+  {
+    id: 'ch6',
+    name: '6장',
+    available: true,
+    questions: [
+      { q: "기계어에 가까운 프로그래밍 언어를 (   )라 부른다.", a: "저급언어"},
+      { q: "기계어를 사람이 읽을 수 있는 문자 형태로 바꿔놓은 프로그래밍 언어는 (   )이다", a: "어셈블리어"},
+      { q: "소스 코드를 컴퓨터가 실행할 수 있는 기계어로 번역하여 실행 파일을 만든 후 한꺼번에 실행하는 형태를 (   ) 방식이라 부른다.", a: "컴파일"},
+      { q: "소스 코드를 한 번에 한 행씩 실행하는 것을 (   ) 방식이라 부른다.", a: "인터프리터"},
+      { q: "(   ) 방식의 장점은 실행 전에 소스 코드의 오류를 발견하고 최적화된 코드를 만들 수 있다는 것이다.", a: "컴파일"},
+      { q: "(   )은 서로 다른 운영체제에서도 동일한 작업환경을 만들어 준다.", a: "가상머신"},
+      { q: "자바를 사용하기 위해 설치하는 가상머신을 (   )이라 부른다.", a: "JVM"},
+      { q: "컴퓨터가 이해할 수 있는 언어로 숫자로만 이루어진 언어를 (   )라 부른다.", a: "기계어"},
+      { q: "변수와 함수를 하나로 묶어서 편리하게 처리하는 언어를 (   ) 언어라 부른다.", a: "객체지향"},
+      { q: "소스 코드에서 오류를 수정하는 작업을 (   )이라 부른다.", a: "디버깅"},
+      { q: "문법에 맞지 않는 코드로 인하여 발생하는 오류를 (   )라 부른다.", a: "문법오류"},
+      { q: "컴파일했는데 실행 파일이 작동하지 않는 오류를 (   )라 부른다.", a: "실행 시간 오류"},
+      { q: "소스 코드에 문법적인 오류는 없지만 원하는 결과가 나오지 않는 오류를 (   )라 부른다.", a: "논리 오류"},
+      { q: "웹 시스템은 (   ) 구조로 되어 있다.", a: ["클라이언트 서버" , "클라이언트-서버"]},
+      { q: "죽지 않고 계속 살아있는 소프트웨어를 (   )이라 부른다. ", a: "데몬"},
+      { q: "특정 위치에 링크를 걸어 다른 문서와 연결하는 기능을 (   )라 부른다.", a: "하이퍼텍스트"},
+      { q: "태그를 사용하여 데이터가 가지는 속성을 표기하는 언어를 (   ) 언어라 부른다.", a: "마크업"},
+      { q: "웹 데몬과 응용 프로그램을 연결하여 인터페이스로 작동하는 소프트웨어를 (   )라 부른다.", a: "CGI"},
+      { q: "아파치 웹 데몬이 제공하는 스크립트를 (   )라 부른다.", a: "PHP"},
+      { q: "웹 데몬의 종류와 상관없이 사용할 수 있는 스크립트가 (   )이다.", a: "JSP"},
+      { q: "반정형 데이터를 구성하는 마크업 언어가 (   )이다.", a: "XML"},
+      { q: "전 세계에서 문서 표준처럼 자리 잡은 어도비의 문서 포맷은 (   )이다.", a: "PDF"},
+      { q: "데이터의 의미나 속성을 규정하는 데이터를 (   )라 부른다.", a: "메타데이터"},
+      { q: "HTML의 한계를 극복하여 멀티미디어 재생을 지원하는 마크업 언어가 (   )이다.", a: "HTML5"},
+      { q: "멀티미디어 지원, 그래픽 지원, 양방향 소켓 통신을 지원하는 마크업 언어가 (   )이다.", a: "HTML5"},
+      { q: "웹 페이지의 3대 구성 요소 중 책의 본문에 해당하는 것은 (   )이다.", a: "HTML"},
+      { q: "웹 페이지의 3대 구성 요소 중 문서의 출력 모양을 결정하는 것은 (   )이다.", a: "CSS"},
+      { q: "웹 페이지의 3대 구성 요소 중 문서에서 동적으로 변하는 부분을 만드는 언어는 (   )이다", a: "자바스크립트"},
+      { q: "HTML 태그 중 문단을 구분하는 태그는 < >이다.", a: "p"},
+      { q: "HTML 태그 중 글자를 굵게 표시하는 태그는 < >이다.", a: "B"},
+      { q: "HTML 태그 중 글자를 기울여 표시하는 태그는 < >이다.", a: "I"},
+      { q: "HTML 태그 중 글자에 밑줄을 표시하는 태그는 < >이다.", a: "U"},
+      { q: "HTML 태그 중 글자를 위첨자로 표시하는 태그는 <>이다. ", a: "SUP"},
+      { q: "HTML 태그 중 글자를 아래첨자로 표시하는 태그는 < >이다.", a: "SUB"},
+      { q: "HTML 태그 중 줄바꿈하는 태그는 < >이다.", a: "BR"},
+      { q: "HTML 태그 중 수평선을 표시하는 태그는 < >이다.", a: "HR"},
+      { q: "HTML 태그 중 표의 한 줄을 지정하는 태그는 < >이다. ", a: "TR"},
+      { q: "HTML 태그 중 표의 한 칸을 지정하는 태그는 < >이다.", a: "TD"},
+      { q: "<FONT> 태그 옵션 중에서 폰트 종류를 지정하는 옵션은 (   )이다. ", a: "face"},
+    ]
+  },
+  {
+    id: 'ch7',
+    name: '7장',
+    available: true,
+    questions: [
+      { q: "컴퓨터를 이용하여 문제를 해결하는 논리적이고 창의적인 생각 방식을 (   )라 한다.", a: "컴퓨팅 사고"},
+      { q: "컴퓨팅 사고의 구성 요소 중 문제를 해결하기 쉬운 작은 단위로 나누는 것을 (   )라 한다.", a: "분해"},
+      { q: "컴퓨팅 사고의 구성 요소 중 문제에서 중요하지 않은 부분을 제거하고 중요한 특징만으로 문제를 구성하는 것을 (   )라 한다.", a: "추상화"},
+      { q: "컴퓨팅 사고의 구성 요소 중 데이터를 특징으로 나누어 유사한 문제 해결 방식이 있는지 찾아보는 과정을 (   )이라 한다.", a: "패턴 인식"},
+      { q: "컴퓨팅 사고의 구성 요소 중 어떤 문제를 해결하는 정해진 일련의 절차나 방법을 공식화한 형태로 표현한 것을 (   )이라 한다.", a: "알고리즘"},
+      { q: "알고리즘을 표현하는 방법 중 기호를 사용하여 작업 흐름을 나타낸 것이 (   )이다.", a: "순서도"},
+      { q: "알고리즘을 표현하는 방법 중 일반적인 언어로 프로그래밍 언어를 흉내 낸 것이 (   )이다.", a: "의사코드"},
+      { q: "'First In, First Out'과 가장 관계있는 자료구조는 (   )이다.", a: "큐"},
+      { q: "'First In, Last Out'과 가장 관계있는 자료구조는 (   )이다.", a: "스택"},
+      { q: "테이블을 만들 때 간단하게 구현할 수 있으나 삽입하거나 삭제할 때 순서를 바꾸기 어려운 자료구조는 (   )이다.", a: "배열"},
+      { q: "크기를 미리 결정하기 어려운 테이블을 만들 때 사용하기 좋은 자료구조는 (   )이다.", a: "연결 리스트"},
+      { q: "수를 오름차순으로 정렬할 때 가장 작은 수를 찾아 빼놓고 그 다음으로 작은 수를 찾아 빼놓는 과정을 반복하는 알고리즘은 (   )이다.", a: "선택 정렬"},
+      { q: "수를 오름차순으로 정렬할 때 앞에서 뒤로 이동하면서 수를 두 개씩 비교하여 작은 수가 큰 수보다 뒤에 있으면 서로 바꾸는 알고리즘은 (   )이다.", a: "버블 정렬"},
+      { q: "수를 오름차순으로 정렬할 때 정렬되지 않은 수를 하나 뽑아 맨 앞의 미리 정렬된 수 사이의 맞는 위치에 넣는 알고리즘은 (   )이다.", a: "삽입 정렬"},
+      { q: "비교 연산을 사용하지 않는 정렬 알고리즘은 (   )이다.", a: "버킷 정렬"},
+      { q: "간판에 햄버거 글씨 대신에 햄버거 모양과 비슷하게 단순한 네온사인을 사용하여 멀리서도 간판이 눈에 잘 들어오게 했다. 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "추상화"},
+      { q: "반복되는 RGB 값을 변화시켜 사진을 만들었다. 이것은 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다." , a: "패턴 인식"},
+      { q: "사람이 걷는 모습을 반복적으로 사용하여 동영상을 만들었다. 이것은 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다." , a: "패턴 인식"},
+      { q: "지하철 노선도는 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다." , a : "추상화"},
+      { q: "판매량을 요일별로 조사해 보니 일요일에 가장 많이 팔린다는 것을 알았다. 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다." , a: "패턴 인식"},
+      { q: "벽에 타일을 붙일 때 타일 한 장에 필요한 접착제의 양을 먼저 알아내고 전체 타일 개수를 계산하여 전체 작업에 필요한 접착제의 양을 구했다. 이것은 컴퓨팅 사고 중 (   )에 해당한다.", a: "분해"},
+      { q: "삼각형과 사각형만 사용하여 그림을 그렸고 갈기가 잘 드러나서 사자 그림인 것을 알 수 있었다. 이것은 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다." , a: "추상화"},
+      { q: "설명서의 지시를 따라 비행기 프라모델을 만들었다. 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다." , a : "알고리즘"},
+      { q: "짬뽕을 만드는 문제를 ‘면 삶기’와 ‘재료 볶기’로 세분화하여 해결했다. 이것은 컴퓨팅 사고 중 (   )에 해당한다." , a: "분해"},
+    ]
+  },
+  { id: 'ch8',  name: '8장',  available: false, questions: [] },
+  { id: 'ch9',  name: '9장',  available: false, questions: [] },
+  { id: 'ch10', name: '10장', available: false, questions: [] },
+  { id: 'ch11', name: '11장', available: false, questions: [] },
 ];
 
+// ── 토글 상태 ─────────────────────────────────────────────────
+const toggleState = {};
+ALL_CHAPTERS.forEach(ch => {
+  toggleState[ch.id] = ch.available; // 기본: 사용 가능한 장은 ON
+});
 
+function buildSelectScreen() {
+  const list = document.getElementById('chapter-list');
+  list.innerHTML = '';
+  ALL_CHAPTERS.forEach(ch => {
+    const row = document.createElement('div');
+    row.className = 'chapter-row' + (ch.available ? '' : ' disabled-chapter');
+
+    const info = document.createElement('div');
+    info.className = 'chapter-info';
+    info.innerHTML = `
+      <span class="chapter-name">${ch.name}</span>
+      <span class="chapter-count">${ch.available ? ch.questions.length + '문제' : '준비 중'}</span>
+    `;
+
+    const toggleWrap = document.createElement('label');
+    toggleWrap.className = 'ios-toggle toggle-wrap';
+    const inp = document.createElement('input');
+    inp.type = 'checkbox';
+    inp.checked = ch.available ? toggleState[ch.id] : false;
+    inp.disabled = !ch.available;
+    inp.addEventListener('change', () => {
+      toggleState[ch.id] = inp.checked;
+      updateSelectHint();
+    });
+    const slider = document.createElement('span');
+    slider.className = 'ios-slider';
+    toggleWrap.appendChild(inp);
+    toggleWrap.appendChild(slider);
+
+    row.appendChild(info);
+    row.appendChild(toggleWrap);
+    list.appendChild(row);
+  });
+  updateSelectHint();
+}
+
+function updateSelectHint() {
+  const active = ALL_CHAPTERS.filter(ch => ch.available && toggleState[ch.id]);
+  const total = active.reduce((s, ch) => s + ch.questions.length, 0);
+  const hint = document.getElementById('select-hint');
+  const btn = document.getElementById('btn-go');
+  if (total === 0) {
+    hint.textContent = '최소 1개 장을 선택해 주세요.';
+    btn.disabled = true;
+  } else {
+    const names = active.map(ch => ch.name).join(', ');
+    hint.textContent = `${names} · 총 ${total}문제`;
+    btn.disabled = false;
+  }
+}
+
+function goToSelect() {
+  document.getElementById('cover-screen').style.display = 'none';
+  const sel = document.getElementById('select-screen');
+  sel.style.display = 'flex';
+  buildSelectScreen();
+}
+
+// ── 퀴즈 로직 ─────────────────────────────────────────────────
 
 function shuffle(arr) {
 
@@ -720,19 +983,20 @@ const ADVANCE_DELAY = 1000;
 
 function startQuiz() {
 
-  document.getElementById('cover-screen').style.display = 'none';
+  // 활성화된 장의 문제만 합쳐서 랜덤 셔플
+  const pool = [];
+  ALL_CHAPTERS.forEach(ch => {
+    if (ch.available && toggleState[ch.id]) {
+      pool.push(...ch.questions);
+    }
+  });
+  if (pool.length === 0) return;
+
+  document.getElementById('select-screen').style.display = 'none';
 
   document.getElementById('quiz-wrap').style.display = 'block';
 
-  init();
-
-}
-
-
-
-function init() {
-
-  QUESTIONS = shuffle(QUESTIONS_RAW);
+  QUESTIONS = shuffle(pool);
 
   answered = Array(QUESTIONS.length).fill(null);
 
@@ -1024,7 +1288,11 @@ function restart() {
 
   document.getElementById('review-screen').style.display = 'none';
 
-  init();
+  document.getElementById('quiz-wrap').style.display = 'none';
+
+  document.getElementById('select-screen').style.display = 'flex';
+
+  buildSelectScreen();
 
 }
 
