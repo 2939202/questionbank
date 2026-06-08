@@ -12,601 +12,601 @@
 
 <style>
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
 
 
-  body {
+  body {
 
-    background: #fff;
+    background: #fff;
 
-    color: #000;
+    color: #000;
 
-    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
 
-    font-size: 15px;
+    font-size: 15px;
 
-    min-height: 100vh;
+    min-height: 100vh;
 
-    display: flex;
+    display: flex;
 
-    flex-direction: column;
+    flex-direction: column;
 
-    align-items: center;
+    align-items: center;
 
-    padding: 48px 20px 80px;
+    padding: 48px 20px 80px;
 
-  }
+  }
 
 
 
-  .wrap {
+  .wrap {
 
-    width: 100%;
+    width: 100%;
 
-    max-width: 640px;
+    max-width: 640px;
 
-  }
+  }
 
-  @media (min-width: 900px) {
+  @media (min-width: 900px) {
 
-    .wrap { max-width: 1100px; }
+    .wrap { max-width: 1100px; }
 
-    body { padding: 56px 48px 80px; }
+    body { padding: 56px 48px 80px; }
 
-  }
+  }
 
 
 
-  @media (min-width: 900px) {
+  @media (min-width: 900px) {
 
-    .desktop-grid {
+    .desktop-grid {
 
-      display: grid;
+      display: grid;
 
-      grid-template-columns: 1fr 320px;
+      grid-template-columns: 1fr 320px;
 
-      gap: 48px;
+      gap: 48px;
 
-      align-items: start;
+      align-items: start;
 
-    }
+    }
 
-    .sidebar { position: sticky; top: 48px; }
+    .sidebar { position: sticky; top: 48px; }
 
-  }
+  }
 
 
 
-  .progress-meta {
+  .progress-meta {
 
-    display: flex;
+    display: flex;
 
-    justify-content: space-between;
+    justify-content: space-between;
 
-    font-size: 13px;
+    font-size: 13px;
 
-    color: #888;
+    color: #888;
 
-    margin-bottom: 6px;
+    margin-bottom: 6px;
 
-  }
+  }
 
-  .progress-track { height: 2px; background: #ddd; margin-bottom: 32px; }
+  .progress-track { height: 2px; background: #ddd; margin-bottom: 32px; }
 
-  .progress-fill { height: 100%; background: #000; transition: width 0.3s ease; }
+  .progress-fill { height: 100%; background: #000; transition: width 0.3s ease; }
 
 
 
-  .score-row { display: flex; gap: 16px; font-size: 13px; color: #888; margin-bottom: 40px; }
+  .score-row { display: flex; gap: 16px; font-size: 13px; color: #888; margin-bottom: 40px; }
 
-  .score-row b { color: #000; }
+  .score-row b { color: #000; }
 
 
 
-  @media (min-width: 900px) {
+  @media (min-width: 900px) {
 
-    .score-row { display: none; }
+    .score-row { display: none; }
 
-    .sidebar-score {
+    .sidebar-score {
 
-      background: #f8f8f8;
+      background: #f8f8f8;
 
-      border-radius: 8px;
+      border-radius: 8px;
 
-      padding: 24px;
+      padding: 24px;
 
-      margin-bottom: 24px;
+      margin-bottom: 24px;
 
-    }
+    }
 
-    .sidebar-score .item {
+    .sidebar-score .item {
 
-      display: flex;
+      display: flex;
 
-      justify-content: space-between;
+      justify-content: space-between;
 
-      font-size: 13px;
+      font-size: 13px;
 
-      color: #888;
+      color: #888;
 
-      padding: 6px 0;
+      padding: 6px 0;
 
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #eee;
 
-    }
+    }
 
-    .sidebar-score .item:last-child { border-bottom: none; }
+    .sidebar-score .item:last-child { border-bottom: none; }
 
-    .sidebar-score .item b { color: #000; }
+    .sidebar-score .item b { color: #000; }
 
-  }
+  }
 
-  @media (max-width: 899px) {
+  @media (max-width: 899px) {
 
-    .sidebar { display: none; }
+    .sidebar { display: none; }
 
-  }
+  }
 
 
 
-  .q-number { font-size: 12px; color: #aaa; margin-bottom: 12px; }
+  .q-number { font-size: 12px; color: #aaa; margin-bottom: 12px; }
 
-  .q-text { font-size: 19px; line-height: 1.65; margin-bottom: 32px; font-weight: 500; }
+  .q-text { font-size: 19px; line-height: 1.65; margin-bottom: 32px; font-weight: 500; }
 
-  @media (min-width: 900px) {
+  @media (min-width: 900px) {
 
-    .q-text { font-size: 22px; }
+    .q-text { font-size: 22px; }
 
-  }
+  }
 
 
 
-  .input-row { display: flex; gap: 8px; }
+  .input-row { display: flex; gap: 8px; }
 
-  .answer-input {
+  .answer-input {
 
-    flex: 1;
+    flex: 1;
 
-    border: 1px solid #ccc;
+    border: 1px solid #ccc;
 
-    border-radius: 4px;
+    border-radius: 4px;
 
-    padding: 10px 14px;
+    padding: 10px 14px;
 
-    font-size: 15px;
+    font-size: 15px;
 
-    font-family: inherit;
+    font-family: inherit;
 
-    outline: none;
+    outline: none;
 
-    transition: border-color 0.15s;
+    transition: border-color 0.15s;
 
-  }
+  }
 
-  @media (min-width: 900px) {
+  @media (min-width: 900px) {
 
-    .answer-input { padding: 13px 18px; font-size: 16px; }
+    .answer-input { padding: 13px 18px; font-size: 16px; }
 
-  }
+  }
 
-  .answer-input:focus { border-color: #000; }
+  .answer-input:focus { border-color: #000; }
 
-  .answer-input:disabled { background: #f5f5f5; color: #999; }
+  .answer-input:disabled { background: #f5f5f5; color: #999; }
 
 
 
-  .btn {
+  .btn {
 
-    background: #000;
+    background: #000;
 
-    color: #fff;
+    color: #fff;
 
-    border: none;
+    border: none;
 
-    border-radius: 4px;
+    border-radius: 4px;
 
-    padding: 10px 20px;
+    padding: 10px 20px;
 
-    font-size: 14px;
+    font-size: 14px;
 
-    font-family: inherit;
+    font-family: inherit;
 
-    cursor: pointer;
+    cursor: pointer;
 
-  }
+  }
 
-  .btn:disabled { background: #ccc; cursor: not-allowed; }
+  .btn:disabled { background: #ccc; cursor: not-allowed; }
 
 
 
-  .feedback { margin-top: 14px; font-size: 14px; line-height: 1.5; display: none; }
+  .feedback { margin-top: 14px; font-size: 14px; line-height: 1.5; display: none; }
 
-  .feedback.show { display: block; }
+  .feedback.show { display: block; }
 
-  .feedback.correct { color: #000; }
+  .feedback.correct { color: #000; }
 
-  .feedback.wrong { color: #888; }
+  .feedback.wrong { color: #888; }
 
-  .feedback .correct-answer { margin-top: 4px; font-size: 13px; }
+  .feedback .correct-answer { margin-top: 4px; font-size: 13px; }
 
 
 
-  .divider { border: none; border-top: 1px solid #eee; margin: 32px 0; }
+  .divider { border: none; border-top: 1px solid #eee; margin: 32px 0; }
 
 
 
-  .nav-row { display: flex; justify-content: space-between; }
+  .nav-row { display: flex; justify-content: space-between; }
 
-  .btn-nav {
+  .btn-nav {
 
-    background: none;
+    background: none;
 
-    border: 1px solid #ddd;
+    border: 1px solid #ddd;
 
-    border-radius: 4px;
+    border-radius: 4px;
 
-    padding: 8px 18px;
+    padding: 8px 18px;
 
-    font-size: 13px;
+    font-size: 13px;
 
-    font-family: inherit;
+    font-family: inherit;
 
-    cursor: pointer;
+    cursor: pointer;
 
-    color: #000;
+    color: #000;
 
-  }
+  }
 
-  .btn-nav:hover { border-color: #000; }
+  .btn-nav:hover { border-color: #000; }
 
-  .btn-nav:disabled { color: #ccc; border-color: #eee; cursor: not-allowed; }
+  .btn-nav:disabled { color: #ccc; border-color: #eee; cursor: not-allowed; }
 
 
 
-  #result-screen { display: none; text-align: center; padding-top: 40px; }
+  #result-screen { display: none; text-align: center; padding-top: 40px; }
 
-  .result-score { font-size: 56px; font-weight: 700; letter-spacing: -2px; margin-bottom: 8px; }
+  .result-score { font-size: 56px; font-weight: 700; letter-spacing: -2px; margin-bottom: 8px; }
 
-  .result-sub { font-size: 14px; color: #888; margin-bottom: 40px; }
+  .result-sub { font-size: 14px; color: #888; margin-bottom: 40px; }
 
-  .result-detail { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; }
+  .result-detail { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; }
 
-  .result-detail .item { font-size: 13px; color: #888; }
+  .result-detail .item { font-size: 13px; color: #888; }
 
-  .result-detail .item b { display: block; font-size: 24px; color: #000; margin-bottom: 2px; }
+  .result-detail .item b { display: block; font-size: 24px; color: #000; margin-bottom: 2px; }
 
-  .result-btns { display: flex; gap: 12px; justify-content: center; }
+  .result-btns { display: flex; gap: 12px; justify-content: center; }
 
-  .btn-restart {
+  .btn-restart {
 
-    background: #000; color: #fff; border: none; border-radius: 4px;
+    background: #000; color: #fff; border: none; border-radius: 4px;
 
-    padding: 12px 32px; font-size: 14px; font-family: inherit; cursor: pointer;
+    padding: 12px 32px; font-size: 14px; font-family: inherit; cursor: pointer;
 
-  }
+  }
 
-  .btn-review {
+  .btn-review {
 
-    background: #fff; color: #000; border: 1px solid #000; border-radius: 4px;
+    background: #fff; color: #000; border: 1px solid #000; border-radius: 4px;
 
-    padding: 12px 32px; font-size: 14px; font-family: inherit; cursor: pointer;
+    padding: 12px 32px; font-size: 14px; font-family: inherit; cursor: pointer;
 
-  }
+  }
 
 
 
-  .advance-bar {
+  .advance-bar {
 
-    height: 2px;
+    height: 2px;
 
-    background: #000;
+    background: #000;
 
-    width: 0%;
+    width: 0%;
 
-    margin-top: 10px;
+    margin-top: 10px;
 
-    transition: none;
+    transition: none;
 
-    border-radius: 2px;
+    border-radius: 2px;
 
-  }
+  }
 
 
 
-  @keyframes shake {
+  @keyframes shake {
 
-    0%,100%{transform:translateX(0)}
+    0%,100%{transform:translateX(0)}
 
-    25%{transform:translateX(-6px)}
+    25%{transform:translateX(-6px)}
 
-    75%{transform:translateX(6px)}
+    75%{transform:translateX(6px)}
 
-  }
+  }
 
-  .shake { animation: shake 0.25s ease; }
+  .shake { animation: shake 0.25s ease; }
 
 
 
-  #cover-screen {
+  #cover-screen {
 
-    display: flex;
+    display: flex;
 
-    flex-direction: column;
+    flex-direction: column;
 
-    justify-content: center;
+    justify-content: center;
 
-    min-height: 60vh;
+    min-height: 60vh;
 
-  }
+  }
 
-  .cover-title {
+  .cover-title {
 
-    font-size: clamp(2.4rem, 8vw, 4rem);
+    font-size: clamp(2.4rem, 8vw, 4rem);
 
-    font-weight: 700;
+    font-weight: 700;
 
-    letter-spacing: -2px;
+    letter-spacing: -2px;
 
-    margin-bottom: 20px;
+    margin-bottom: 20px;
 
-    line-height: 1.1;
+    line-height: 1.1;
 
-  }
+  }
 
-  .cover-notice {
+  .cover-notice {
 
-    font-size: 13px;
+    font-size: 13px;
 
-    color: #888;
+    color: #888;
 
-    line-height: 1.8;
+    line-height: 1.8;
 
-    margin-bottom: 40px;
+    margin-bottom: 40px;
 
-    border-left: 2px solid #ddd;
+    border-left: 2px solid #ddd;
 
-    padding-left: 14px;
+    padding-left: 14px;
 
-  }
+  }
 
-  .btn-start {
+  .btn-start {
 
-    background: #000; color: #fff; border: none; border-radius: 4px;
+    background: #000; color: #fff; border: none; border-radius: 4px;
 
-    padding: 14px 40px; font-size: 15px; font-family: inherit; cursor: pointer;
+    padding: 14px 40px; font-size: 15px; font-family: inherit; cursor: pointer;
 
-    align-self: flex-start;
+    align-self: flex-start;
 
-  }
+  }
 
 
 
-  #review-screen { display: none; padding-top: 8px; }
+  #review-screen { display: none; padding-top: 8px; }
 
-  .review-header {
+  .review-header {
 
-    display: flex;
+    display: flex;
 
-    align-items: center;
+    align-items: center;
 
-    justify-content: space-between;
+    justify-content: space-between;
 
-    margin-bottom: 32px;
+    margin-bottom: 32px;
 
-  }
+  }
 
-  .review-title { font-size: 20px; font-weight: 700; }
+  .review-title { font-size: 20px; font-weight: 700; }
 
-  .btn-back {
+  .btn-back {
 
-    background: none; border: 1px solid #ddd; border-radius: 4px;
+    background: none; border: 1px solid #ddd; border-radius: 4px;
 
-    padding: 8px 18px; font-size: 13px; font-family: inherit; cursor: pointer; color: #000;
+    padding: 8px 18px; font-size: 13px; font-family: inherit; cursor: pointer; color: #000;
 
-  }
+  }
 
-  .btn-back:hover { border-color: #000; }
+  .btn-back:hover { border-color: #000; }
 
-  .review-item {
+  .review-item {
 
-    border-top: 1px solid #eee;
+    border-top: 1px solid #eee;
 
-    padding: 20px 0;
+    padding: 20px 0;
 
-  }
+  }
 
-  .review-item:last-child { border-bottom: 1px solid #eee; }
+  .review-item:last-child { border-bottom: 1px solid #eee; }
 
-  .review-q { font-size: 15px; line-height: 1.6; margin-bottom: 10px; font-weight: 500; }
+  .review-q { font-size: 15px; line-height: 1.6; margin-bottom: 10px; font-weight: 500; }
 
-  .review-meta { font-size: 13px; color: #888; display: flex; flex-direction: column; gap: 4px; }
+  .review-meta { font-size: 13px; color: #888; display: flex; flex-direction: column; gap: 4px; }
 
-  .review-meta .my-ans { color: #bbb; }
+  .review-meta .my-ans { color: #bbb; }
 
-  .review-meta .right-ans { color: #000; font-weight: 600; }
+  .review-meta .right-ans { color: #000; font-weight: 600; }
 
-  .review-qnum { font-size: 11px; color: #bbb; margin-bottom: 6px; }
+  .review-qnum { font-size: 11px; color: #bbb; margin-bottom: 6px; }
 
-  .no-wrong { color: #888; font-size: 14px; padding: 40px 0; text-align: center; }
+  .no-wrong { color: #888; font-size: 14px; padding: 40px 0; text-align: center; }
 
 
 
-  /* ── 문제 선택 화면 ── */
+  /* ── 문제 선택 화면 ── */
 
-  #select-screen {
+  #select-screen {
 
-    display: none;
+    display: none;
 
-    flex-direction: column;
+    flex-direction: column;
 
-    min-height: 60vh;
+    min-height: 60vh;
 
-    padding-top: 8px;
+    padding-top: 8px;
 
-  }
+  }
 
-  .select-title {
+  .select-title {
 
-    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
 
-    font-weight: 700;
+    font-weight: 700;
 
-    letter-spacing: -1px;
+    letter-spacing: -1px;
 
-    margin-bottom: 8px;
+    margin-bottom: 8px;
 
-    line-height: 1.2;
+    line-height: 1.2;
 
-  }
+  }
 
-  .select-sub {
+  .select-sub {
 
-    font-size: 13px;
+    font-size: 13px;
 
-    color: #888;
+    color: #888;
 
-    margin-bottom: 36px;
+    margin-bottom: 36px;
 
-  }
+  }
 
-  .chapter-list {
+  .chapter-list {
 
-    display: flex;
+    display: flex;
 
-    flex-direction: column;
+    flex-direction: column;
 
-    gap: 0;
+    gap: 0;
 
-    margin-bottom: 40px;
+    margin-bottom: 40px;
 
-    border: 1px solid #e5e5e5;
+    border: 1px solid #e5e5e5;
 
-    border-radius: 12px;
+    border-radius: 12px;
 
-    overflow: hidden;
+    overflow: hidden;
 
-  }
+  }
 
-  .chapter-row {
+  .chapter-row {
 
-    display: flex;
+    display: flex;
 
-    align-items: center;
+    align-items: center;
 
-    justify-content: space-between;
+    justify-content: space-between;
 
-    padding: 16px 20px;
+    padding: 16px 20px;
 
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
 
-    background: #fff;
+    background: #fff;
 
-    transition: background 0.12s;
+    transition: background 0.12s;
 
-  }
+  }
 
-  .chapter-row:last-child { border-bottom: none; }
+  .chapter-row:last-child { border-bottom: none; }
 
-  .chapter-row.disabled-chapter { opacity: 0.38; }
+  .chapter-row.disabled-chapter { opacity: 0.38; }
 
-  .chapter-info { display: flex; flex-direction: column; gap: 2px; }
+  .chapter-info { display: flex; flex-direction: column; gap: 2px; }
 
-  .chapter-name { font-size: 15px; font-weight: 600; }
+  .chapter-name { font-size: 15px; font-weight: 600; }
 
-  .chapter-count { font-size: 12px; color: #aaa; }
+  .chapter-count { font-size: 12px; color: #aaa; }
 
-  /* iOS toggle switch */
+  /* iOS toggle switch */
 
-  .toggle-wrap { flex-shrink: 0; }
+  .toggle-wrap { flex-shrink: 0; }
 
-  .ios-toggle {
+  .ios-toggle {
 
-    position: relative;
+    position: relative;
 
-    display: inline-block;
+    display: inline-block;
 
-    width: 51px;
+    width: 51px;
 
-    height: 31px;
+    height: 31px;
 
-  }
+  }
 
-  .ios-toggle input { opacity: 0; width: 0; height: 0; }
+  .ios-toggle input { opacity: 0; width: 0; height: 0; }
 
-  .ios-slider {
+  .ios-slider {
 
-    position: absolute;
+    position: absolute;
 
-    cursor: pointer;
+    cursor: pointer;
 
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
 
-    background: #e5e5ea;
+    background: #e5e5ea;
 
-    border-radius: 31px;
+    border-radius: 31px;
 
-    transition: background 0.22s;
+    transition: background 0.22s;
 
-  }
+  }
 
-  .ios-slider::before {
+  .ios-slider::before {
 
-    content: '';
+    content: '';
 
-    position: absolute;
+    position: absolute;
 
-    height: 27px; width: 27px;
+    height: 27px; width: 27px;
 
-    left: 2px; bottom: 2px;
+    left: 2px; bottom: 2px;
 
-    background: #fff;
+    background: #fff;
 
-    border-radius: 50%;
+    border-radius: 50%;
 
-    box-shadow: 0 2px 6px rgba(0,0,0,0.22);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.22);
 
-    transition: transform 0.22s cubic-bezier(.4,1.4,.6,1);
+    transition: transform 0.22s cubic-bezier(.4,1.4,.6,1);
 
-  }
+  }
 
-  .ios-toggle input:checked + .ios-slider { background: #000; }
+  .ios-toggle input:checked + .ios-slider { background: #000; }
 
-  .ios-toggle input:checked + .ios-slider::before { transform: translateX(20px); }
+  .ios-toggle input:checked + .ios-slider::before { transform: translateX(20px); }
 
-  .ios-toggle input:disabled + .ios-slider { cursor: not-allowed; }
+  .ios-toggle input:disabled + .ios-slider { cursor: not-allowed; }
 
-  .select-actions {
+  .select-actions {
 
-    display: flex;
+    display: flex;
 
-    flex-direction: column;
+    flex-direction: column;
 
-    gap: 10px;
+    gap: 10px;
 
-    align-items: flex-start;
+    align-items: flex-start;
 
-  }
+  }
 
-  .select-hint {
+  .select-hint {
 
-    font-size: 12px;
+    font-size: 12px;
 
-    color: #bbb;
+    color: #bbb;
 
-    margin-bottom: 4px;
+    margin-bottom: 4px;
 
-  }
+  }
 
-  .btn-go {
+  .btn-go {
 
-    background: #000; color: #fff; border: none; border-radius: 4px;
+    background: #000; color: #fff; border: none; border-radius: 4px;
 
-    padding: 14px 40px; font-size: 15px; font-family: inherit; cursor: pointer;
+    padding: 14px 40px; font-size: 15px; font-family: inherit; cursor: pointer;
 
-  }
+  }
 
-  .btn-go:disabled { background: #ccc; cursor: not-allowed; }
+  .btn-go:disabled { background: #ccc; cursor: not-allowed; }
 
 </style>
 
@@ -618,176 +618,176 @@
 
 
 
-  <!-- 표지 -->
+  <!-- 표지 -->
 
-  <div id="cover-screen">
+  <div id="cover-screen">
 
-    <div class="cover-title">문제 은행</div>
+    <div class="cover-title">문제 은행</div>
 
-    <div class="cover-notice">
+    <div class="cover-notice">
 
-      개인용<br>
+      개인용<br>
 
-      출제 예제 1
+      출제 예제 1
 
-    </div>
+    </div>
 
-    <button class="btn-start" onclick="goToSelect()">문제 선택하기</button>
+    <button class="btn-start" onclick="goToSelect()">문제 선택하기</button>
 
-  </div>
+  </div>
 
 
 
-  <!-- 문제 선택 화면 -->
+  <!-- 문제 선택 화면 -->
 
-  <div id="select-screen">
+  <div id="select-screen">
 
-    <div class="select-title">문제 선택</div>
+    <div class="select-title">문제 선택</div>
 
-    <div class="select-sub">풀고 싶은 장을 켜고 시작하세요.</div>
+    <div class="select-sub">풀고 싶은 장을 켜고 시작하세요.</div>
 
-    <div class="chapter-list" id="chapter-list"></div>
-    <div class="select-actions">
-      <div class="select-hint" id="select-hint"></div>
-      <button class="btn-go" id="btn-go" onclick="startQuiz()">시작하기</button>
-    </div>
-  </div>
+    <div class="chapter-list" id="chapter-list"></div>
+    <div class="select-actions">
+      <div class="select-hint" id="select-hint"></div>
+      <button class="btn-go" id="btn-go" onclick="startQuiz()">시작하기</button>
+    </div>
+  </div>
 
 
 
-  <!-- 퀴즈 본체 -->
+  <!-- 퀴즈 본체 -->
 
-  <div id="quiz-wrap" style="display:none;">
+  <div id="quiz-wrap" style="display:none;">
 
-    <div class="progress-meta">
+    <div class="progress-meta">
 
-      <span id="prog-label">0 / 0</span>
+      <span id="prog-label">0 / 0</span>
 
-      <span id="prog-pct">0%</span>
+      <span id="prog-pct">0%</span>
 
-    </div>
+    </div>
 
-    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
 
 
 
-    <div class="score-row">
+    <div class="score-row">
 
-      <span>정답 <b id="sc-correct">0</b></span>
+      <span>정답 <b id="sc-correct">0</b></span>
 
-      <span>오답 <b id="sc-wrong">0</b></span>
+      <span>오답 <b id="sc-wrong">0</b></span>
 
-      <span>남은 문제 <b id="sc-remain">0</b></span>
+      <span>남은 문제 <b id="sc-remain">0</b></span>
 
-    </div>
+    </div>
 
 
 
-    <div class="desktop-grid">
+    <div class="desktop-grid">
 
-      <div>
+      <div>
 
-        <div id="quiz-section">
+        <div id="quiz-section">
 
-          <div class="q-number" id="q-number">Q1</div>
+          <div class="q-number" id="q-number">Q1</div>
 
-          <div class="q-text" id="q-text"></div>
+          <div class="q-text" id="q-text"></div>
 
-          <div class="input-row">
+          <div class="input-row">
 
-            <input class="answer-input" id="answer-input" type="text" placeholder="정답 입력" autocomplete="off" />
+            <input class="answer-input" id="answer-input" type="text" placeholder="정답 입력" autocomplete="off" />
 
-            <button class="btn" id="btn-submit">확인</button>
+            <button class="btn" id="btn-submit">확인</button>
 
-          </div>
+          </div>
 
-          <div class="feedback" id="feedback"></div>
+          <div class="feedback" id="feedback"></div>
 
-          <div class="advance-bar" id="advance-bar"></div>
+          <div class="advance-bar" id="advance-bar"></div>
 
-          <hr class="divider">
+          <hr class="divider">
 
-          <div class="nav-row">
+          <div class="nav-row">
 
-            <button class="btn-nav" id="btn-prev">← 이전</button>
+            <button class="btn-nav" id="btn-prev">← 이전</button>
 
-            <button class="btn-nav" id="btn-next">다음 →</button>
+            <button class="btn-nav" id="btn-next">다음 →</button>
 
-          </div>
+          </div>
 
-        </div>
+        </div>
 
 
 
-        <!-- 결과 화면 -->
+        <!-- 결과 화면 -->
 
-        <div id="result-screen">
+        <div id="result-screen">
 
-          <div class="result-score" id="res-pct">0%</div>
+          <div class="result-score" id="res-pct">0%</div>
 
-          <div class="result-sub">모든 문제 완료</div>
+          <div class="result-sub">모든 문제 완료</div>
 
-          <div class="result-detail">
+          <div class="result-detail">
 
-            <div class="item"><b id="res-correct">0</b>정답</div>
+            <div class="item"><b id="res-correct">0</b>정답</div>
 
-            <div class="item"><b id="res-wrong">0</b>오답</div>
+            <div class="item"><b id="res-wrong">0</b>오답</div>
 
-          </div>
+          </div>
 
-          <div class="result-btns">
+          <div class="result-btns">
 
-            <button class="btn-restart" onclick="restart()">다시 풀기</button>
+            <button class="btn-restart" onclick="restart()">다시 풀기</button>
 
-            <button class="btn-review" onclick="showReview()">오답 모아보기</button>
+            <button class="btn-review" onclick="showReview()">오답 모아보기</button>
 
-          </div>
+          </div>
 
-        </div>
+        </div>
 
 
 
-        <!-- 오답노트 화면 -->
+        <!-- 오답노트 화면 -->
 
-        <div id="review-screen">
+        <div id="review-screen">
 
-          <div class="review-header">
+          <div class="review-header">
 
-            <div class="review-title">오답노트</div>
+            <div class="review-title">오답노트</div>
 
-            <button class="btn-back" onclick="backToResult()">← 결과로</button>
+            <button class="btn-back" onclick="backToResult()">← 결과로</button>
 
-          </div>
+          </div>
 
-          <div id="review-list"></div>
+          <div id="review-list"></div>
 
-        </div>
+        </div>
 
-      </div>
+      </div>
 
 
 
-      <!-- 데스크톱 사이드바 -->
+      <!-- 데스크톱 사이드바 -->
 
-      <div class="sidebar">
+      <div class="sidebar">
 
-        <div class="sidebar-score">
+        <div class="sidebar-score">
 
-          <div class="item"><span>정답</span><b id="sd-correct">0</b></div>
+          <div class="item"><span>정답</span><b id="sd-correct">0</b></div>
 
-          <div class="item"><span>오답</span><b id="sd-wrong">0</b></div>
+          <div class="item"><span>오답</span><b id="sd-wrong">0</b></div>
 
-          <div class="item"><span>남은 문제</span><b id="sd-remain">0</b></div>
+          <div class="item"><span>남은 문제</span><b id="sd-remain">0</b></div>
 
-          <div class="item"><span>진행률</span><b id="sd-pct">0%</b></div>
+          <div class="item"><span>진행률</span><b id="sd-pct">0%</b></div>
 
-        </div>
+        </div>
 
-      </div>
+      </div>
 
-    </div>
+    </div>
 
-  </div>
+  </div>
 
 
 
@@ -798,225 +798,225 @@
 // ── 문제 데이터 ──────────────────────────────────────────────
 
 const ALL_CHAPTERS = [
-  {
-    id: 'ch6',
-    name: '6장',
-    available: true,
-    questions: [
-      { q: "기계어에 가까운 프로그래밍 언어를 (   )라 부른다.", a: "저급언어"},
-      { q: "기계어를 사람이 읽을 수 있는 문자 형태로 바꿔놓은 프로그래밍 언어는 (   )이다", a: "어셈블리어"},
-      { q: "소스 코드를 컴퓨터가 실행할 수 있는 기계어로 번역하여 실행 파일을 만든 후 한꺼번에 실행하는 형태를 (   ) 방식이라 부른다.", a: "컴파일"},
-      { q: "소스 코드를 한 번에 한 행씩 실행하는 것을 (   ) 방식이라 부른다.", a: "인터프리터"},
-      { q: "(   ) 방식의 장점은 실행 전에 소스 코드의 오류를 발견하고 최적화된 코드를 만들 수 있다는 것이다.", a: "컴파일"},
-      { q: "(   )은 서로 다른 운영체제에서도 동일한 작업환경을 만들어 준다.", a: "가상머신"},
-      { q: "자바를 사용하기 위해 설치하는 가상머신을 (   )이라 부른다.", a: "JVM"},
-      { q: "컴퓨터가 이해할 수 있는 언어로 숫자로만 이루어진 언어를 (   )라 부른다.", a: "기계어"},
-      { q: "변수와 함수를 하나로 묶어서 편리하게 처리하는 언어를 (   ) 언어라 부른다.", a: "객체지향"},
-      { q: "소스 코드에서 오류를 수정하는 작업을 (   )이라 부른다.", a: "디버깅"},
-      { q: "문법에 맞지 않는 코드로 인하여 발생하는 오류를 (   )라 부른다.", a: "문법오류"},
-      { q: "컴파일했는데 실행 파일이 작동하지 않는 오류를 (   )라 부른다.", a: "실행 시간 오류"},
-      { q: "소스 코드에 문법적인 오류는 없지만 원하는 결과가 나오지 않는 오류를 (   )라 부른다.", a: "논리 오류"},
-      { q: "웹 시스템은 (   ) 구조로 되어 있다.", a: ["클라이언트 서버" , "클라이언트-서버"]},
-      { q: "죽지 않고 계속 살아있는 소프트웨어를 (   )이라 부른다. ", a: "데몬"},
-      { q: "특정 위치에 링크를 걸어 다른 문서와 연결하는 기능을 (   )라 부른다.", a: "하이퍼텍스트"},
-      { q: "태그를 사용하여 데이터가 가지는 속성을 표기하는 언어를 (   ) 언어라 부른다.", a: "마크업"},
-      { q: "웹 데몬과 응용 프로그램을 연결하여 인터페이스로 작동하는 소프트웨어를 (   )라 부른다.", a: "CGI"},
-      { q: "아파치 웹 데몬이 제공하는 스크립트를 (   )라 부른다.", a: "PHP"},
-      { q: "웹 데몬의 종류와 상관없이 사용할 수 있는 스크립트가 (   )이다.", a: "JSP"},
-      { q: "반정형 데이터를 구성하는 마크업 언어가 (   )이다.", a: "XML"},
-      { q: "전 세계에서 문서 표준처럼 자리 잡은 어도비의 문서 포맷은 (   )이다.", a: "PDF"},
-      { q: "데이터의 의미나 속성을 규정하는 데이터를 (   )라 부른다.", a: "메타데이터"},
-      { q: "HTML의 한계를 극복하여 멀티미디어 재생을 지원하는 마크업 언어가 (   )이다.", a: "HTML5"},
-      { q: "멀티미디어 지원, 그래픽 지원, 양방향 소켓 통신을 지원하는 마크업 언어가 (   )이다.", a: "HTML5"},
-      { q: "웹 페이지의 3대 구성 요소 중 책의 본문에 해당하는 것은 (   )이다.", a: "HTML"},
-      { q: "웹 페이지의 3대 구성 요소 중 문서의 출력 모양을 결정하는 것은 (   )이다.", a: "CSS"},
-      { q: "웹 페이지의 3대 구성 요소 중 문서에서 동적으로 변하는 부분을 만드는 언어는 (   )이다", a: "자바스크립트"},
-      { q: "HTML 태그 중 문단을 구분하는 태그는 < >이다.", a: "p"},
-      { q: "HTML 태그 중 글자를 굵게 표시하는 태그는 < >이다.", a: "B"},
-      { q: "HTML 태그 중 글자를 기울여 표시하는 태그는 < >이다.", a: "I"},
-      { q: "HTML 태그 중 글자에 밑줄을 표시하는 태그는 < >이다.", a: "U"},
-      { q: "HTML 태그 중 글자를 위첨자로 표시하는 태그는 <>이다. ", a: "SUP"},
-      { q: "HTML 태그 중 글자를 아래첨자로 표시하는 태그는 < >이다.", a: "SUB"},
-      { q: "HTML 태그 중 줄바꿈하는 태그는 < >이다.", a: "BR"},
-      { q: "HTML 태그 중 수평선을 표시하는 태그는 < >이다.", a: "HR"},
-      { q: "HTML 태그 중 표의 한 줄을 지정하는 태그는 < >이다. ", a: "TR"},
-      { q: "HTML 태그 중 표의 한 칸을 지정하는 태그는 < >이다.", a: "TD"},
-      { q: "<FONT> 태그 옵션 중에서 폰트 종류를 지정하는 옵션은 (   )이다. ", a: "face"},
-    ]
-  },
-  {
-    id: 'ch7',
-    name: '7장',
-    available: true,
-    questions: [
-      { q: "컴퓨터를 이용하여 문제를 해결하는 논리적이고 창의적인 생각 방식을 (   )라 한다.", a: "컴퓨팅 사고"},
-      { q: "컴퓨팅 사고의 구성 요소 중 문제를 해결하기 쉬운 작은 단위로 나누는 것을 (   )라 한다.", a: "분해"},
-      { q: "컴퓨팅 사고의 구성 요소 중 문제에서 중요하지 않은 부분을 제거하고 중요한 특징만으로 문제를 구성하는 것을 (   )라 한다.", a: "추상화"},
-      { q: "컴퓨팅 사고의 구성 요소 중 데이터를 특징으로 나누어 유사한 문제 해결 방식이 있는지 찾아보는 과정을 (   )이라 한다.", a: "패턴 인식"},
-      { q: "컴퓨팅 사고의 구성 요소 중 어떤 문제를 해결하는 정해진 일련의 절차나 방법을 공식화한 형태로 표현한 것을 (   )이라 한다.", a: "알고리즘"},
-      { q: "알고리즘을 표현하는 방법 중 기호를 사용하여 작업 흐름을 나타낸 것이 (   )이다.", a: "순서도"},
-      { q: "알고리즘을 표현하는 방법 중 일반적인 언어로 프로그래밍 언어를 흉내 낸 것이 (   )이다.", a: "의사코드"},
-      { q: "'First In, First Out'과 가장 관계있는 자료구조는 (   )이다.", a: "큐"},
-      { q: "'First In, Last Out'과 가장 관계있는 자료구조는 (   )이다.", a: "스택"},
-      { q: "테이블을 만들 때 간단하게 구현할 수 있으나 삽입하거나 삭제할 때 순서를 바꾸기 어려운 자료구조는 (   )이다.", a: "배열"},
-      { q: "크기를 미리 결정하기 어려운 테이블을 만들 때 사용하기 좋은 자료구조는 (   )이다.", a: "연결 리스트"},
-      { q: "수를 오름차순으로 정렬할 때 가장 작은 수를 찾아 빼놓고 그 다음으로 작은 수를 찾아 빼놓는 과정을 반복하는 알고리즘은 (   )이다.", a: "선택 정렬"},
-      { q: "수를 오름차순으로 정렬할 때 앞에서 뒤로 이동하면서 수를 두 개씩 비교하여 작은 수가 큰 수보다 뒤에 있으면 서로 바꾸는 알고리즘은 (   )이다.", a: "버블 정렬"},
-      { q: "수를 오름차순으로 정렬할 때 정렬되지 않은 수를 하나 뽑아 맨 앞의 미리 정렬된 수 사이의 맞는 위치에 넣는 알고리즘은 (   )이다.", a: "삽입 정렬"},
-      { q: "비교 연산을 사용하지 않는 정렬 알고리즘은 (   )이다.", a: "버킷 정렬"},
-      { q: "간판에 햄버거 글씨 대신에 햄버거 모양과 비슷하게 단순한 네온사인을 사용하여 멀리서도 간판이 눈에 잘 들어오게 했다. 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "추상화"},
-      { q: "반복되는 RGB 값을 변화시켜 사진을 만들었다. 이것은 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "패턴 인식"},
-      { q: "사람이 걷는 모습을 반복적으로 사용하여 동영상을 만들었다. 이것은 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "패턴 인식"},
-      { q: "지하철 노선도는 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "추상화"},
-      { q: "판매량을 요일별로 조사해 보니 일요일에 가장 많이 팔린다는 것을 알았다. 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "패턴 인식"},
-      { q: "벽에 타일을 붙일 때 타일 한 장에 필요한 접착제의 양을 먼저 알아내고 전체 타일 개수를 계산하여 전체 작업에 필요한 접착제의 양을 구했다. 이것은 컴퓨팅 사고 중 (   )에 해당한다.", a: "분해"},
-      { q: "삼각형과 사각형만 사용하여 그림을 그렸고 갈기가 잘 드러나서 사자 그림인 것을 알 수 있었다. 이것은 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "추상화"},
-      { q: "설명서의 지시를 따라 비행기 프라모델을 만들었다. 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "알고리즘"},
-      { q: "짬뽕을 만드는 문제를 '면 삶기'와 '재료 볶기'로 세분화하여 해결했다. 이것은 컴퓨팅 사고 중 (   )에 해당한다.", a: "분해"},
-    ]
-  },
-  {
-    id: 'ch9',
-    name: '9장',
-    available: true,
-    questions: [
-      { q: "데이터를 데이터베이스에 체계적으로 정리하고 가공하면 (   )가 된다.", a: "정보"},
-      { q: "여러 사용자가 공유하고 통합해서 운영하는 데이터의 집합을 (   )라 한다.", a: "데이터베이스"},
-      { q: "데이터베이스를 이용하여 정보 처리를 하는 시스템을 (   )이라고 한다.", a: "데이터베이스 관리 시스템"},
-      { q: "데이터에서 유용한 정보를 추출하는 기술을 (   )이라 부른다.", a: "데이터 마이닝"},
-      { q: "정해진 구조에 따라 저장된 데이터를 의미하며, 데이터베이스를 구성하기 쉬운 데이터를 (   )라 한다.", a: "정형 데이터"},
-      { q: "정해진 구조가 없는 데이터이기 때문에 정보를 추출하기 어려운 데이터를 (   )라 한다.", a: "비정형 데이터"},
-      { q: "구조와 데이터를 같이 저장하는 데이터로 정형과 비정형의 중간 형태인 데이터를 (   )라 한다.", a: "반정형 데이터"},
-      { q: "스마트폰 전화 번호부는 (   )의 예이다.", a: "정형 데이터"},
-      { q: "손으로 쓴 수첩은 (   )의 예이다.", a: "비정형 데이터"},
-      { q: "데이터베이스의 특징 중 사용자 요구에 응답하는 시간이 길어지면 고장이라고 판단할 수 있기 때문에 데이터베이스는 (   )으로 접근이 가능해야 한다.", a: "실시간"},
-      { q: "데이터베이스의 특징 중 방금 비밀번호를 바꾸었다면 변경된 비밀번호로만 시스템에 접근할 수 있어야 한다는 것은 (   )에 해당한다.", a: "최신 데이터 유지"},
-      { q: "데이터베이스의 특징 중 데이터는 여러 컴퓨터에서 사용할 수 있어야 한다는 것은 (   )에 해당한다.", a: "동시 공유"},
-      { q: "데이터베이스의 특징 중 이익이 제일 높은 음료수, 재고가 10개 이하로 남은 식품 같은 검색이 가능해야 한다는 것은 (   )에 해당한다.", a: "내용 참조"},
-      { q: "파일을 사용하여 데이터를 처리할 때, 판매가를 변경하고 프로그램 10개에 있는 판매가를 모두 찾아서 변경했다. 이것은 (   ) 문제가 발생한 것이다.", a: "데이터 중복성"},
-      { q: "파일을 사용하여 데이터를 처리할 때, 할인율이라는 새로운 항목이 생기면 프로그램 10개를 이것에 맞게 수정했다. 이는 (   ) 문제가 발생한 것이다.", a: "데이터 종속성"},
-      { q: "파일을 사용하여 데이터를 처리할 때, 아르바이트생이 제품 원가를 외부인에게 공개했다. 이는 (   ) 문제가 발생한 것이다.", a: "보안"},
-      { q: "데이터베이스에 저장된 데이터를 처리하려고 만든 언어는 (   )이다.", a: "SQL"},
-      { q: "데이터베이스에 저장되는 데이터 구조와 제약 조건을 정의한 것을 (   )라 한다.", a: "스키마"},
-      { q: "스키마 구조에 맞추어 저장된 데이터의 묶음 1개를 (   )라고 한다.", a: "레코드"},
-      { q: "레코드는 여러 (   )의 집합이다.", a: "필드"},
-      { q: "데이터베이스를 3단계로 추상화하고 단계별로 스키마를 만드는 것은 데이터의 (   ) 때문이다.", a: "독립성"},
-      { q: "데이터베이스 모델 중 테이블 형태로 구성되며 키(key)를 중심으로 연결하는 방식으로 현재 대부분의 데이터베이스에서 사용하는 모델은 (   ) 모델이다.", a: "관계"},
-      { q: "데이터베이스 모델 중 비정형 데이터를 위해 만든 모델은 (   ) 모델이다.", a: "NOSQL"},
-      { q: "관계형 데이터베이스에서 구조화된 데이터와 제약 조건을 그래프 형식으로 표현하는 방법을 (   ) 모델링이라 한다.", a: ["개체-관계", "개체 관계"]},
-      { q: "개체-관계 모델링은 개체, 속성, (   ) 세 가지로 구성된다.", a: "관계"},
-    ]
-  },
-  {
-    id: 'ch10',
-    name: '10장',
-    available: true,
-    questions: [
-      { q: "수집 및 가공한 정보를 송수신하거나 저장하는 과정에서 발생하는 훼손, 변조, 유출과 같은 불법적인 행위를 차단하는 방법을 (   )이라 정의한다.", a: "정보 보안"},
-      { q: "(   )는 컴퓨터의 자료를 파괴하거나 시스템을 정지시키는 파괴적인 소프트웨어로, 주변을 감염시킨다.", a: "컴퓨터 바이러스"},
-      { q: "(   )은 컴퓨터 바이러스와 달리 자기 복제 능력이 없으며, 크랙에 숨어 배포되는 악성 소프트웨어이다.", a: ["Trojan horse" , "트로이 목마"]},
-      { q: "(   )는 엑셀, 워드 혹은 파워포인트 문서 같은 데이터 파일에 포함되어 배포된다.", a: ["Macro virus" , "매크로 바이러스"]},
-      { q: "악성 소프트웨어 중 (   )에 감염되면 컴퓨터의 모든 파일에 암호가 걸려 돈을 지불해야 암호를 풀 수 있다.", a: ["Ransomware" , "랜섬웨어"]},
-      { q: "(   )는 사용자의 화면이나 홈페이지에 동의 없이 광고를 띄우는 악성 소프트웨어이다.", a: ["Adware" , "애드웨어"]},
-      { q: "(   )는 사용자의 동의 없이 방문하는 사이트, 사용 패턴, 개인 정보를 훔쳐간다.", a: ["Spyware" , "스파이웨어"]},
-      { q: "시스템 외부로부터 내부로 침투하려는 모든 시도를 (   )이라 부른다.", a: ["크래킹, 해킹" , "해킹, 크래킹"]},
-      { q: "여러 대의 좀비 컴퓨터로부터 엄청난 양의 데이터를 서버로 보냄으로써 다른 사람이 서버를 이용하지 못하게 하는 해킹 기법을 (   )이라 부른다.", a: ["DDoS Attack" , "디도스 공격"]},
-      { q: "(   )은 이메일로 사용자를 속여 가짜 사이트에 개인 정보를 입력하도록 유도하지만, 사용자가 가짜 사이트임을 자각할 수 있다.", a: ["phishing" , "피싱"]},
-      { q: "(   )은 문자 메시지를 이용하여 사용자를 가짜 사이트로 유도하는 온라인상의 공격이다.", a: ["smishing" , "스미싱"]},
-      { q: "(   )은 DNS 스푸핑을 이용하는 피싱 기법이다.", a: ["Pharming" , "파밍"]},
-      { q: "(   )은 악성 소프트웨어의 침투를 막고, 이미 침투한 악성 소프트웨어를 찾아서 제거하는 보안 소프트웨어이다.", a: "백신"},
-      { q: "네트워크를 통해 들어오는 데이터를 검사하여 악성 소프트웨어나 해킹이 내부로 침투하지 못하게 막는 소프트웨어를 (   )라 부른다.", a:  ["Firewall" , "방화벽"]},
-      { q: "(   )는 일정 시간만 쓰고 버리는 비밀번호이다.", a: "OTP"},
-      { q: "지문 인식, 안면 인식, 홍채 인식과 같이 사람의 신체를 이용하는 인증을 (   ) 인증이라 부른다.", a: "바이오"},
-      { q: "(   )은 디지털 콘텐츠의 적법한 사용만 허락하고, 무단 유통과 무단 사용을 막는 기술이다.", a: "DRM"},
-      { q: "사진이나 그림이 불법적으로 도용되면 자신이 원작자임을 (   )로 증명할 수 있다.", a: "디지털 워터마크"},
-      { q: "(   ) 암호화는 하나의 키로 암호화와 복호화 둘 다 하는 방식이다.", a: ["대칭키, 단일키" , "단일키, 대칭키"]},
-      { q: "단일키 암호화 방식은 보내는 쪽이 암호문과 (   )를 모두 받는 쪽에 전달해야 한다.", a: "키"},
-      { q: "(   ) 암호화는 암호를 만드는 공개키와 암호를 푸는 비밀키를 쌍으로 구성하는 방식이다.", a: ["비대칭키, 공개키" , "공개키, 비대칭키"]},
-    ]
-  },
-  { id: 'ch11', name: '11장', available: false, questions: [] },
+  {
+    id: 'ch6',
+    name: '6장',
+    available: true,
+    questions: [
+      { q: "기계어에 가까운 프로그래밍 언어를 (   )라 부른다.", a: "저급언어"},
+      { q: "기계어를 사람이 읽을 수 있는 문자 형태로 바꿔놓은 프로그래밍 언어는 (   )이다", a: "어셈블리어"},
+      { q: "소스 코드를 컴퓨터가 실행할 수 있는 기계어로 번역하여 실행 파일을 만든 후 한꺼번에 실행하는 형태를 (   ) 방식이라 부른다.", a: "컴파일"},
+      { q: "소스 코드를 한 번에 한 행씩 실행하는 것을 (   ) 방식이라 부른다.", a: "인터프리터"},
+      { q: "(   ) 방식의 장점은 실행 전에 소스 코드의 오류를 발견하고 최적화된 코드를 만들 수 있다는 것이다.", a: "컴파일"},
+      { q: "(   )은 서로 다른 운영체제에서도 동일한 작업환경을 만들어 준다.", a: "가상머신"},
+      { q: "자바를 사용하기 위해 설치하는 가상머신을 (   )이라 부른다.", a: "JVM"},
+      { q: "컴퓨터가 이해할 수 있는 언어로 숫자로만 이루어진 언어를 (   )라 부른다.", a: "기계어"},
+      { q: "변수와 함수를 하나로 묶어서 편리하게 처리하는 언어를 (   ) 언어라 부른다.", a: "객체지향"},
+      { q: "소스 코드에서 오류를 수정하는 작업을 (   )이라 부른다.", a: "디버깅"},
+      { q: "문법에 맞지 않는 코드로 인하여 발생하는 오류를 (   )라 부른다.", a: "문법오류"},
+      { q: "컴파일했는데 실행 파일이 작동하지 않는 오류를 (   )라 부른다.", a: "실행 시간 오류"},
+      { q: "소스 코드에 문법적인 오류는 없지만 원하는 결과가 나오지 않는 오류를 (   )라 부른다.", a: "논리 오류"},
+      { q: "웹 시스템은 (   ) 구조로 되어 있다.", a: ["클라이언트 서버" , "클라이언트-서버"]},
+      { q: "죽지 않고 계속 살아있는 소프트웨어를 (   )이라 부른다. ", a: "데몬"},
+      { q: "특정 위치에 링크를 걸어 다른 문서와 연결하는 기능을 (   )라 부른다.", a: "하이퍼텍스트"},
+      { q: "태그를 사용하여 데이터가 가지는 속성을 표기하는 언어를 (   ) 언어라 부른다.", a: "마크업"},
+      { q: "웹 데몬과 응용 프로그램을 연결하여 인터페이스로 작동하는 소프트웨어를 (   )라 부른다.", a: "CGI"},
+      { q: "아파치 웹 데몬이 제공하는 스크립트를 (   )라 부른다.", a: "PHP"},
+      { q: "웹 데몬의 종류와 상관없이 사용할 수 있는 스크립트가 (   )이다.", a: "JSP"},
+      { q: "반정형 데이터를 구성하는 마크업 언어가 (   )이다.", a: "XML"},
+      { q: "전 세계에서 문서 표준처럼 자리 잡은 어도비의 문서 포맷은 (   )이다.", a: "PDF"},
+      { q: "데이터의 의미나 속성을 규정하는 데이터를 (   )라 부른다.", a: "메타데이터"},
+      { q: "HTML의 한계를 극복하여 멀티미디어 재생을 지원하는 마크업 언어가 (   )이다.", a: "HTML5"},
+      { q: "멀티미디어 지원, 그래픽 지원, 양방향 소켓 통신을 지원하는 마크업 언어가 (   )이다.", a: "HTML5"},
+      { q: "웹 페이지의 3대 구성 요소 중 책의 본문에 해당하는 것은 (   )이다.", a: "HTML"},
+      { q: "웹 페이지의 3대 구성 요소 중 문서의 출력 모양을 결정하는 것은 (   )이다.", a: "CSS"},
+      { q: "웹 페이지의 3대 구성 요소 중 문서에서 동적으로 변하는 부분을 만드는 언어는 (   )이다", a: "자바스크립트"},
+      { q: "HTML 태그 중 문단을 구분하는 태그는 < >이다.", a: "p"},
+      { q: "HTML 태그 중 글자를 굵게 표시하는 태그는 < >이다.", a: "B"},
+      { q: "HTML 태그 중 글자를 기울여 표시하는 태그는 < >이다.", a: "I"},
+      { q: "HTML 태그 중 글자에 밑줄을 표시하는 태그는 < >이다.", a: "U"},
+      { q: "HTML 태그 중 글자를 위첨자로 표시하는 태그는 <>이다. ", a: "SUP"},
+      { q: "HTML 태그 중 글자를 아래첨자로 표시하는 태그는 < >이다.", a: "SUB"},
+      { q: "HTML 태그 중 줄바꿈하는 태그는 < >이다.", a: "BR"},
+      { q: "HTML 태그 중 수평선을 표시하는 태그는 < >이다.", a: "HR"},
+      { q: "HTML 태그 중 표의 한 줄을 지정하는 태그는 < >이다. ", a: "TR"},
+      { q: "HTML 태그 중 표의 한 칸을 지정하는 태그는 < >이다.", a: "TD"},
+      { q: "<FONT> 태그 옵션 중에서 폰트 종류를 지정하는 옵션은 (   )이다. ", a: "face"},
+    ]
+  },
+  {
+    id: 'ch7',
+    name: '7장',
+    available: true,
+    questions: [
+      { q: "컴퓨터를 이용하여 문제를 해결하는 논리적이고 창의적인 생각 방식을 (   )라 한다.", a: "컴퓨팅 사고"},
+      { q: "컴퓨팅 사고의 구성 요소 중 문제를 해결하기 쉬운 작은 단위로 나누는 것을 (   )라 한다.", a: "분해"},
+      { q: "컴퓨팅 사고의 구성 요소 중 문제에서 중요하지 않은 부분을 제거하고 중요한 특징만으로 문제를 구성하는 것을 (   )라 한다.", a: "추상화"},
+      { q: "컴퓨팅 사고의 구성 요소 중 데이터를 특징으로 나누어 유사한 문제 해결 방식이 있는지 찾아보는 과정을 (   )이라 한다.", a: "패턴 인식"},
+      { q: "컴퓨팅 사고의 구성 요소 중 어떤 문제를 해결하는 정해진 일련의 절차나 방법을 공식화한 형태로 표현한 것을 (   )이라 한다.", a: "알고리즘"},
+      { q: "알고리즘을 표현하는 방법 중 기호를 사용하여 작업 흐름을 나타낸 것이 (   )이다.", a: "순서도"},
+      { q: "알고리즘을 표현하는 방법 중 일반적인 언어로 프로그래밍 언어를 흉내 낸 것이 (   )이다.", a: "의사코드"},
+      { q: "'First In, First Out'과 가장 관계있는 자료구조는 (   )이다.", a: "큐"},
+      { q: "'First In, Last Out'과 가장 관계있는 자료구조는 (   )이다.", a: "스택"},
+      { q: "테이블을 만들 때 간단하게 구현할 수 있으나 삽입하거나 삭제할 때 순서를 바꾸기 어려운 자료구조는 (   )이다.", a: "배열"},
+      { q: "크기를 미리 결정하기 어려운 테이블을 만들 때 사용하기 좋은 자료구조는 (   )이다.", a: "연결 리스트"},
+      { q: "수를 오름차순으로 정렬할 때 가장 작은 수를 찾아 빼놓고 그 다음으로 작은 수를 찾아 빼놓는 과정을 반복하는 알고리즘은 (   )이다.", a: "선택 정렬"},
+      { q: "수를 오름차순으로 정렬할 때 앞에서 뒤로 이동하면서 수를 두 개씩 비교하여 작은 수가 큰 수보다 뒤에 있으면 서로 바꾸는 알고리즘은 (   )이다.", a: "버블 정렬"},
+      { q: "수를 오름차순으로 정렬할 때 정렬되지 않은 수를 하나 뽑아 맨 앞의 미리 정렬된 수 사이의 맞는 위치에 넣는 알고리즘은 (   )이다.", a: "삽입 정렬"},
+      { q: "비교 연산을 사용하지 않는 정렬 알고리즘은 (   )이다.", a: "버킷 정렬"},
+      { q: "간판에 햄버거 글씨 대신에 햄버거 모양과 비슷하게 단순한 네온사인을 사용하여 멀리서도 간판이 눈에 잘 들어오게 했다. 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "추상화"},
+      { q: "반복되는 RGB 값을 변화시켜 사진을 만들었다. 이것은 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "패턴 인식"},
+      { q: "사람이 걷는 모습을 반복적으로 사용하여 동영상을 만들었다. 이것은 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "패턴 인식"},
+      { q: "지하철 노선도는 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "추상화"},
+      { q: "판매량을 요일별로 조사해 보니 일요일에 가장 많이 팔린다는 것을 알았다. 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "패턴 인식"},
+      { q: "벽에 타일을 붙일 때 타일 한 장에 필요한 접착제의 양을 먼저 알아내고 전체 타일 개수를 계산하여 전체 작업에 필요한 접착제의 양을 구했다. 이것은 컴퓨팅 사고 중 (   )에 해당한다.", a: "분해"},
+      { q: "삼각형과 사각형만 사용하여 그림을 그렸고 갈기가 잘 드러나서 사자 그림인 것을 알 수 있었다. 이것은 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "추상화"},
+      { q: "설명서의 지시를 따라 비행기 프라모델을 만들었다. 컴퓨팅 사고의 구성 요소 중 (   )에 해당한다.", a: "알고리즘"},
+      { q: "짬뽕을 만드는 문제를 '면 삶기'와 '재료 볶기'로 세분화하여 해결했다. 이것은 컴퓨팅 사고 중 (   )에 해당한다.", a: "분해"},
+    ]
+  },
+  {
+    id: 'ch9',
+    name: '9장',
+    available: true,
+    questions: [
+      { q: "데이터를 데이터베이스에 체계적으로 정리하고 가공하면 (   )가 된다.", a: "정보"},
+      { q: "여러 사용자가 공유하고 통합해서 운영하는 데이터의 집합을 (   )라 한다.", a: "데이터베이스"},
+      { q: "데이터베이스를 이용하여 정보 처리를 하는 시스템을 (   )이라고 한다.", a: "데이터베이스 관리 시스템"},
+      { q: "데이터에서 유용한 정보를 추출하는 기술을 (   )이라 부른다.", a: "데이터 마이닝"},
+      { q: "정해진 구조에 따라 저장된 데이터를 의미하며, 데이터베이스를 구성하기 쉬운 데이터를 (   )라 한다.", a: "정형 데이터"},
+      { q: "정해진 구조가 없는 데이터이기 때문에 정보를 추출하기 어려운 데이터를 (   )라 한다.", a: "비정형 데이터"},
+      { q: "구조와 데이터를 같이 저장하는 데이터로 정형과 비정형의 중간 형태인 데이터를 (   )라 한다.", a: "반정형 데이터"},
+      { q: "스마트폰 전화 번호부는 (   )의 예이다.", a: "정형 데이터"},
+      { q: "손으로 쓴 수첩은 (   )의 예이다.", a: "비정형 데이터"},
+      { q: "데이터베이스의 특징 중 사용자 요구에 응답하는 시간이 길어지면 고장이라고 판단할 수 있기 때문에 데이터베이스는 (   )으로 접근이 가능해야 한다.", a: "실시간"},
+      { q: "데이터베이스의 특징 중 방금 비밀번호를 바꾸었다면 변경된 비밀번호로만 시스템에 접근할 수 있어야 한다는 것은 (   )에 해당한다.", a: "최신 데이터 유지"},
+      { q: "데이터베이스의 특징 중 데이터는 여러 컴퓨터에서 사용할 수 있어야 한다는 것은 (   )에 해당한다.", a: "동시 공유"},
+      { q: "데이터베이스의 특징 중 이익이 제일 높은 음료수, 재고가 10개 이하로 남은 식품 같은 검색이 가능해야 한다는 것은 (   )에 해당한다.", a: "내용 참조"},
+      { q: "파일을 사용하여 데이터를 처리할 때, 판매가를 변경하고 프로그램 10개에 있는 판매가를 모두 찾아서 변경했다. 이것은 (   ) 문제가 발생한 것이다.", a: "데이터 중복성"},
+      { q: "파일을 사용하여 데이터를 처리할 때, 할인율이라는 새로운 항목이 생기면 프로그램 10개를 이것에 맞게 수정했다. 이는 (   ) 문제가 발생한 것이다.", a: "데이터 종속성"},
+      { q: "파일을 사용하여 데이터를 처리할 때, 아르바이트생이 제품 원가를 외부인에게 공개했다. 이는 (   ) 문제가 발생한 것이다.", a: "보안"},
+      { q: "데이터베이스에 저장된 데이터를 처리하려고 만든 언어는 (   )이다.", a: "SQL"},
+      { q: "데이터베이스에 저장되는 데이터 구조와 제약 조건을 정의한 것을 (   )라 한다.", a: "스키마"},
+      { q: "스키마 구조에 맞추어 저장된 데이터의 묶음 1개를 (   )라고 한다.", a: "레코드"},
+      { q: "레코드는 여러 (   )의 집합이다.", a: "필드"},
+      { q: "데이터베이스를 3단계로 추상화하고 단계별로 스키마를 만드는 것은 데이터의 (   ) 때문이다.", a: "독립성"},
+      { q: "데이터베이스 모델 중 테이블 형태로 구성되며 키(key)를 중심으로 연결하는 방식으로 현재 대부분의 데이터베이스에서 사용하는 모델은 (   ) 모델이다.", a: "관계"},
+      { q: "데이터베이스 모델 중 비정형 데이터를 위해 만든 모델은 (   ) 모델이다.", a: "NOSQL"},
+      { q: "관계형 데이터베이스에서 구조화된 데이터와 제약 조건을 그래프 형식으로 표현하는 방법을 (   ) 모델링이라 한다.", a:["개체-관계", "개체 관계"]},
+      { q: "개체-관계 모델링은 개체, 속성, (   ) 세 가지로 구성된다.", a: "관계"},
+    ]
+  },
+  {
+    id: 'ch10',
+    name: '10장',
+    available: true,
+    questions: [
+      { q: "수집 및 가공한 정보를 송수신하거나 저장하는 과정에서 발생하는 훼손, 변조, 유출과 같은 불법적인 행위를 차단하는 방법을 (   )이라 정의한다.", a: "정보 보안"},
+      { q: "(   )는 컴퓨터의 자료를 파괴하거나 시스템을 정지시키는 파괴적인 소프트웨어로, 주변을 감염시킨다.", a: "컴퓨터 바이러스"},
+      { q: "(   )은 컴퓨터 바이러스와 달리 자기 복제 능력이 없으며, 크랙에 숨어 배포되는 악성 소프트웨어이다.", a: ["Trojan horse" , "트로이 목마"]},
+      { q: "(   )는 엑셀, 워드 혹은 파워포인트 문서 같은 데이터 파일에 포함되어 배포된다.", a: ["Macro virus" , "매크로 바이러스"]},
+      { q: "악성 소프트웨어 중 (   )에 감염되면 컴퓨터의 모든 파일에 암호가 걸려 돈을 지불해야 암호를 풀 수 있다.", a: ["Ransomware" , "랜섬웨어"]},
+      { q: "(   )는 사용자의 화면이나 홈페이지에 동의 없이 광고를 띄우는 악성 소프트웨어이다.", a: ["Adware" , "애드웨어"]},
+      { q: "(   )는 사용자의 동의 없이 방문하는 사이트, 사용 패턴, 개인 정보를 훔쳐간다.", a: ["Spyware" , "스파이웨어"]},
+      { q: "시스템 외부로부터 내부로 침투하려는 모든 시도를 (   )이라 부른다.", a: ["크래킹, 해킹" , "해킹, 크래킹"]},
+      { q: "여러 대의 좀비 컴퓨터로부터 엄청난 양의 데이터를 서버로 보냄으로써 다른 사람이 서버를 이용하지 못하게 하는 해킹 기법을 (   )이라 부른다.", a: ["DDoS Attack" , "디도스 공격"]},
+      { q: "(   )은 이메일로 사용자를 속여 가짜 사이트에 개인 정보를 입력하도록 유도하지만, 사용자가 가짜 사이트임을 자각할 수 있다.", a: ["phishing" , "피싱"]},
+      { q: "(   )은 문자 메시지를 이용하여 사용자를 가짜 사이트로 유도하는 온라인상의 공격이다.", a: ["smishing" , "스미싱"]},
+      { q: "(   )은 DNS 스푸핑을 이용하는 피싱 기법이다.", a: ["Pharming" , "파밍"]},
+      { q: "(   )은 악성 소프트웨어의 침투를 막고, 이미 침투한 악성 소프트웨어를 찾아서 제거하는 보안 소프트웨어이다.", a: "백신"},
+      { q: "네트워크를 통해 들어오는 데이터를 검사하여 악성 소프트웨어나 해킹이 내부로 침투하지 못하게 막는 소프트웨어를 (   )라 부른다.", a:  ["Firewall" , "방화벽"]},
+      { q: "(   )는 일정 시간만 쓰고 버리는 비밀번호이다.", a: "OTP"},
+      { q: "지문 인식, 안면 인식, 홍채 인식과 같이 사람의 신체를 이용하는 인증을 (   ) 인증이라 부른다.", a: "바이오"},
+      { q: "(   )은 디지털 콘텐츠의 적법한 사용만 허락하고, 무단 유통과 무단 사용을 막는 기술이다.", a: "DRM"},
+      { q: "사진이나 그림이 불법적으로 도용되면 자신이 원작자임을 (   )로 증명할 수 있다.", a: "디지털 워터마크"},
+      { q: "(   ) 암호화는 하나의 키로 암호화와 복호화 둘 다 하는 방식이다.", a: ["대칭키, 단일키" , "단일키, 대칭키"]},
+      { q: "단일키 암호화 방식은 보내는 쪽이 암호문과 (   )를 모두 받는 쪽에 전달해야 한다.", a: "키"},
+      { q: "(   ) 암호화는 암호를 만드는 공개키와 암호를 푸는 비밀키를 쌍으로 구성하는 방식이다.", a: ["비대칭키, 공개키" , "공개키, 비대칭키"]},
+    ]
+  },
+  { id: 'ch11', name: '11장', available: false, questions: [] },
 ];
 
 // ── 토글 상태 ─────────────────────────────────────────────────
 const toggleState = {};
 ALL_CHAPTERS.forEach(ch => {
-  toggleState[ch.id] = ch.available; // 기본: 사용 가능한 장은 ON
+  toggleState[ch.id] = ch.available; // 기본: 사용 가능한 장은 ON
 });
 
 function buildSelectScreen() {
-  const list = document.getElementById('chapter-list');
-  list.innerHTML = '';
-  ALL_CHAPTERS.forEach(ch => {
-    const row = document.createElement('div');
-    row.className = 'chapter-row' + (ch.available ? '' : ' disabled-chapter');
+  const list = document.getElementById('chapter-list');
+  list.innerHTML = '';
+  ALL_CHAPTERS.forEach(ch => {
+    const row = document.createElement('div');
+    row.className = 'chapter-row' + (ch.available ? '' : ' disabled-chapter');
 
-    const info = document.createElement('div');
-    info.className = 'chapter-info';
-    info.innerHTML = `
-      <span class="chapter-name">${ch.name}</span>
-      <span class="chapter-count">${ch.available ? ch.questions.length + '문제' : '준비 중'}</span>
-    `;
+    const info = document.createElement('div');
+    info.className = 'chapter-info';
+    info.innerHTML = `
+      <span class="chapter-name">${ch.name}</span>
+      <span class="chapter-count">${ch.available ? ch.questions.length + '문제' : '준비 중'}</span>
+    `;
 
-    const toggleWrap = document.createElement('label');
-    toggleWrap.className = 'ios-toggle toggle-wrap';
-    const inp = document.createElement('input');
-    inp.type = 'checkbox';
-    inp.checked = ch.available ? toggleState[ch.id] : false;
-    inp.disabled = !ch.available;
-    inp.addEventListener('change', () => {
-      toggleState[ch.id] = inp.checked;
-      updateSelectHint();
-    });
-    const slider = document.createElement('span');
-    slider.className = 'ios-slider';
-    toggleWrap.appendChild(inp);
-    toggleWrap.appendChild(slider);
+    const toggleWrap = document.createElement('label');
+    toggleWrap.className = 'ios-toggle toggle-wrap';
+    const inp = document.createElement('input');
+    inp.type = 'checkbox';
+    inp.checked = ch.available ? toggleState[ch.id] : false;
+    inp.disabled = !ch.available;
+    inp.addEventListener('change', () => {
+      toggleState[ch.id] = inp.checked;
+      updateSelectHint();
+    });
+    const slider = document.createElement('span');
+    slider.className = 'ios-slider';
+    toggleWrap.appendChild(inp);
+    toggleWrap.appendChild(slider);
 
-    row.appendChild(info);
-    row.appendChild(toggleWrap);
-    list.appendChild(row);
-  });
-  updateSelectHint();
+    row.appendChild(info);
+    row.appendChild(toggleWrap);
+    list.appendChild(row);
+  });
+  updateSelectHint();
 }
 
 function updateSelectHint() {
-  const active = ALL_CHAPTERS.filter(ch => ch.available && toggleState[ch.id]);
-  const total = active.reduce((s, ch) => s + ch.questions.length, 0);
-  const hint = document.getElementById('select-hint');
-  const btn = document.getElementById('btn-go');
-  if (total === 0) {
-    hint.textContent = '최소 1개 장을 선택해 주세요.';
-    btn.disabled = true;
-  } else {
-    const names = active.map(ch => ch.name).join(', ');
-    hint.textContent = `${names} · 총 ${total}문제`;
-    btn.disabled = false;
-  }
+  const active = ALL_CHAPTERS.filter(ch => ch.available && toggleState[ch.id]);
+  const total = active.reduce((s, ch) => s + ch.questions.length, 0);
+  const hint = document.getElementById('select-hint');
+  const btn = document.getElementById('btn-go');
+  if (total === 0) {
+    hint.textContent = '최소 1개 장을 선택해 주세요.';
+    btn.disabled = true;
+  } else {
+    const names = active.map(ch => ch.name).join(', ');
+    hint.textContent = `${names} · 총 ${total}문제`;
+    btn.disabled = false;
+  }
 }
 
 function goToSelect() {
-  document.getElementById('cover-screen').style.display = 'none';
-  const sel = document.getElementById('select-screen');
-  sel.style.display = 'flex';
-  buildSelectScreen();
+  document.getElementById('cover-screen').style.display = 'none';
+  const sel = document.getElementById('select-screen');
+  sel.style.display = 'flex';
+  buildSelectScreen();
 }
 
 // ── 퀴즈 로직 ─────────────────────────────────────────────────
 
 function shuffle(arr) {
 
-  const a = [...arr];
+  const a = [...arr];
 
-  for (let i = a.length - 1; i > 0; i--) {
+  for (let i = a.length - 1; i > 0; i--) {
 
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(Math.random() * (i + 1));
 
-    [a[i], a[j]] = [a[j], a[i]];
+    [a[i], a[j]] = [a[j], a[i]];
 
-  }
+  }
 
-  return a;
+  return a;
 
 }
 
@@ -1026,7 +1026,7 @@ let QUESTIONS = [];
 
 let current = 0;
 
-let answered = [];    // 'correct' | 'wrong' | null
+let answered = [];    // 'correct' | 'wrong' | null
 
 let userAnswers = []; // 사용자가 입력한 답 (문자열)
 
@@ -1040,30 +1040,30 @@ const ADVANCE_DELAY = 1000;
 
 function startQuiz() {
 
-  // 활성화된 장의 문제만 합쳐서 랜덤 셔플
-  const pool = [];
-  ALL_CHAPTERS.forEach(ch => {
-    if (ch.available && toggleState[ch.id]) {
-      pool.push(...ch.questions);
-    }
-  });
-  if (pool.length === 0) return;
+  // 활성화된 장의 문제만 합쳐서 랜덤 셔플
+  const pool = [];
+  ALL_CHAPTERS.forEach(ch => {
+    if (ch.available && toggleState[ch.id]) {
+      pool.push(...ch.questions);
+    }
+  });
+  if (pool.length === 0) return;
 
-  document.getElementById('select-screen').style.display = 'none';
+  document.getElementById('select-screen').style.display = 'none';
 
-  document.getElementById('quiz-wrap').style.display = 'block';
+  document.getElementById('quiz-wrap').style.display = 'block';
 
-  QUESTIONS = shuffle(pool);
+  QUESTIONS = shuffle(pool);
 
-  answered = Array(QUESTIONS.length).fill(null);
+  answered = Array(QUESTIONS.length).fill(null);
 
-  userAnswers = Array(QUESTIONS.length).fill('');
+  userAnswers = Array(QUESTIONS.length).fill('');
 
-  current = 0;
+  current = 0;
 
-  justSubmitted = false;
+  justSubmitted = false;
 
-  render();
+  render();
 
 }
 
@@ -1071,7 +1071,7 @@ function startQuiz() {
 
 function normalize(str) {
 
-  return str.replace(/\s+/g, '').toLowerCase();
+  return str.replace(/\s+/g, '').toLowerCase();
 
 }
 
@@ -1079,63 +1079,63 @@ function normalize(str) {
 
 function isCorrect(input, answer) {
 
- 
 
- if (Array.isArray(answer)) {
 
-  
+ if (Array.isArray(answer)) {
 
-  return answer.some(a => normalize(input) === normalize(a));
 
-  
 
-  }
+  return answer.some(a => normalize(input) === normalize(a));
 
-   return normalize(input) === normalize(answer);
 
- 
 
- }
+  }
+
+   return normalize(input) === normalize(answer);
+
+
+
+ }
 
 
 
 function updateScores() {
 
-  const total = QUESTIONS.length;
+  const total = QUESTIONS.length;
 
-  const done = answered.filter(x => x !== null).length;
+  const done = answered.filter(x => x !== null).length;
 
-  const pct = Math.round(done / total * 100);
+  const pct = Math.round(done / total * 100);
 
-  const correct = answered.filter(x => x === 'correct').length;
+  const correct = answered.filter(x => x === 'correct').length;
 
-  const wrong   = answered.filter(x => x === 'wrong').length;
-
-
-
-  document.getElementById('progress-fill').style.width = pct + '%';
-
-  document.getElementById('prog-label').textContent = `${done} / ${total}`;
-
-  document.getElementById('prog-pct').textContent = pct + '%';
+  const wrong   = answered.filter(x => x === 'wrong').length;
 
 
 
-  document.getElementById('sc-correct').textContent = correct;
+  document.getElementById('progress-fill').style.width = pct + '%';
 
-  document.getElementById('sc-wrong').textContent   = wrong;
+  document.getElementById('prog-label').textContent = `${done} / ${total}`;
 
-  document.getElementById('sc-remain').textContent  = total - done;
+  document.getElementById('prog-pct').textContent = pct + '%';
 
 
 
-  document.getElementById('sd-correct').textContent = correct;
+  document.getElementById('sc-correct').textContent = correct;
 
-  document.getElementById('sd-wrong').textContent   = wrong;
+  document.getElementById('sc-wrong').textContent   = wrong;
 
-  document.getElementById('sd-remain').textContent  = total - done;
+  document.getElementById('sc-remain').textContent  = total - done;
 
-  document.getElementById('sd-pct').textContent     = pct + '%';
+
+
+  document.getElementById('sd-correct').textContent = correct;
+
+  document.getElementById('sd-wrong').textContent   = wrong;
+
+  document.getElementById('sd-remain').textContent  = total - done;
+
+  document.getElementById('sd-pct').textContent     = pct + '%';
 
 }
 
@@ -1143,99 +1143,99 @@ function updateScores() {
 
 function render() {
 
-  if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; }
+  if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; }
 
 
 
-  const total = QUESTIONS.length;
+  const total = QUESTIONS.length;
 
-  const q = QUESTIONS[current];
+  const q = QUESTIONS[current];
 
-  const state = answered[current];
-
-
-
-  updateScores();
+  const state = answered[current];
 
 
 
-  document.getElementById('q-number').textContent = `Q${current + 1} / ${total}`;
-
-  document.getElementById('q-text').textContent = q.q;
+  updateScores();
 
 
 
-  const input  = document.getElementById('answer-input');
+  document.getElementById('q-number').textContent = `Q${current + 1} / ${total}`;
 
-  const btnSub = document.getElementById('btn-submit');
-
-  const fb     = document.getElementById('feedback');
-
-  const bar    = document.getElementById('advance-bar');
+  document.getElementById('q-text').textContent = q.q;
 
 
 
-  bar.style.transition = 'none';
+  const input  = document.getElementById('answer-input');
 
-  bar.style.width = '0%';
+  const btnSub = document.getElementById('btn-submit');
 
+  const fb     = document.getElementById('feedback');
 
-
-  if (state === null) {
-
-    input.value = '';
-
-    input.disabled = false;
-
-    btnSub.disabled = false;
-
-    fb.className = 'feedback';
-
-    fb.innerHTML = '';
-
-    input.focus();
-
-  } else if (state === 'correct') {
-
-    input.value = Array.isArray(q.a) ? q.a[0] : q.a;
-
-    input.disabled = true;
-
-    btnSub.disabled = true;
-
-    fb.className = 'feedback correct show';
-
-    fb.innerHTML = '✓ 정답';
-
-    if (justSubmitted) scheduleAdvance(bar);
-
-  } else {
-
-    input.value = userAnswers[current];
-
-    input.disabled = true;
-
-    btnSub.disabled = true;
-
-    fb.className = 'feedback wrong show';
-
-    const answerText = Array.isArray(q.a) ? q.a.join(' / ') : q.a;
-
-    fb.innerHTML = `✗ 오답<div class="correct-answer">정답: ${answerText}</div>`;
-
-    if (justSubmitted) scheduleAdvance(bar);
-
-  }
+  const bar    = document.getElementById('advance-bar');
 
 
 
-  justSubmitted = false;
+  bar.style.transition = 'none';
+
+  bar.style.width = '0%';
 
 
 
-  document.getElementById('btn-prev').disabled = current === 0;
+  if (state === null) {
 
-  document.getElementById('btn-next').disabled = current === total - 1;
+    input.value = '';
+
+    input.disabled = false;
+
+    btnSub.disabled = false;
+
+    fb.className = 'feedback';
+
+    fb.innerHTML = '';
+
+    input.focus();
+
+  } else if (state === 'correct') {
+
+    input.value = Array.isArray(q.a) ? q.a[0] : q.a;
+
+    input.disabled = true;
+
+    btnSub.disabled = true;
+
+    fb.className = 'feedback correct show';
+
+    fb.innerHTML = '✓ 정답';
+
+    if (justSubmitted) scheduleAdvance(bar);
+
+  } else {
+
+    input.value = userAnswers[current];
+
+    input.disabled = true;
+
+    btnSub.disabled = true;
+
+    fb.className = 'feedback wrong show';
+
+    const answerText = Array.isArray(q.a) ? q.a.join(' / ') : q.a;
+
+    fb.innerHTML = `✗ 오답<div class="correct-answer">정답: ${answerText}</div>`;
+
+    if (justSubmitted) scheduleAdvance(bar);
+
+  }
+
+
+
+  justSubmitted = false;
+
+
+
+  document.getElementById('btn-prev').disabled = current === 0;
+
+  document.getElementById('btn-next').disabled = current === total - 1;
 
 }
 
@@ -1243,33 +1243,33 @@ function render() {
 
 function scheduleAdvance(bar) {
 
-  requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
 
-    bar.style.transition = `width ${ADVANCE_DELAY}ms linear`;
+    bar.style.transition = `width ${ADVANCE_DELAY}ms linear`;
 
-    bar.style.width = '100%';
+    bar.style.width = '100%';
 
-  });
+  });
 
 
 
-  advanceTimer = setTimeout(() => {
+  advanceTimer = setTimeout(() => {
 
-    if (answered.every(x => x !== null)) {
+    if (answered.every(x => x !== null)) {
 
-      showResult();
+      showResult();
 
-    } else if (current < QUESTIONS.length - 1) {
+    } else if (current < QUESTIONS.length - 1) {
 
-      current++;
+      current++;
 
-      justSubmitted = false;
+      justSubmitted = false;
 
-      render();
+      render();
 
-    }
+    }
 
-  }, ADVANCE_DELAY);
+  }, ADVANCE_DELAY);
 
 }
 
@@ -1277,37 +1277,37 @@ function scheduleAdvance(bar) {
 
 function submit() {
 
-  const val = document.getElementById('answer-input').value.trim();
+  const val = document.getElementById('answer-input').value.trim();
 
-  if (!val) return;
-
-
-
-  const result = isCorrect(val, QUESTIONS[current].a) ? 'correct' : 'wrong';
-
-  answered[current] = result;
-
-  userAnswers[current] = val;
+  if (!val) return;
 
 
 
-  if (result === 'wrong') {
+  const result = isCorrect(val, QUESTIONS[current].a) ? 'correct' : 'wrong';
 
-    const sec = document.getElementById('quiz-section');
+  answered[current] = result;
 
-    sec.classList.remove('shake');
-
-    void sec.offsetWidth;
-
-    sec.classList.add('shake');
-
-  }
+  userAnswers[current] = val;
 
 
 
-  justSubmitted = true;
+  if (result === 'wrong') {
 
-  render();
+    const sec = document.getElementById('quiz-section');
+
+    sec.classList.remove('shake');
+
+    void sec.offsetWidth;
+
+    sec.classList.add('shake');
+
+  }
+
+
+
+  justSubmitted = true;
+
+  render();
 
 }
 
@@ -1315,23 +1315,23 @@ function submit() {
 
 function showResult() {
 
-  document.getElementById('quiz-section').style.display = 'none';
+  document.getElementById('quiz-section').style.display = 'none';
 
-  document.getElementById('result-screen').style.display = 'block';
+  document.getElementById('result-screen').style.display = 'block';
 
-  document.getElementById('review-screen').style.display = 'none';
+  document.getElementById('review-screen').style.display = 'none';
 
 
 
-  const correct = answered.filter(x => x === 'correct').length;
+  const correct = answered.filter(x => x === 'correct').length;
 
-  const wrong   = answered.filter(x => x === 'wrong').length;
+  const wrong   = answered.filter(x => x === 'wrong').length;
 
-  document.getElementById('res-correct').textContent = correct;
+  document.getElementById('res-correct').textContent = correct;
 
-  document.getElementById('res-wrong').textContent   = wrong;
+  document.getElementById('res-wrong').textContent   = wrong;
 
-  document.getElementById('res-pct').textContent = Math.round(correct / QUESTIONS.length * 100) + '%';
+  document.getElementById('res-pct').textContent = Math.round(correct / QUESTIONS.length * 100) + '%';
 
 }
 
@@ -1339,17 +1339,17 @@ function showResult() {
 
 function restart() {
 
-  document.getElementById('quiz-section').style.display = '';
+  document.getElementById('quiz-section').style.display = '';
 
-  document.getElementById('result-screen').style.display = 'none';
+  document.getElementById('result-screen').style.display = 'none';
 
-  document.getElementById('review-screen').style.display = 'none';
+  document.getElementById('review-screen').style.display = 'none';
 
-  document.getElementById('quiz-wrap').style.display = 'none';
+  document.getElementById('quiz-wrap').style.display = 'none';
 
-  document.getElementById('select-screen').style.display = 'flex';
+  document.getElementById('select-screen').style.display = 'flex';
 
-  buildSelectScreen();
+  buildSelectScreen();
 
 }
 
@@ -1357,51 +1357,51 @@ function restart() {
 
 function showReview() {
 
-  document.getElementById('result-screen').style.display = 'none';
+  document.getElementById('result-screen').style.display = 'none';
 
-  document.getElementById('review-screen').style.display = 'block';
-
-
-
-  const wrongList = QUESTIONS
-
-    .map((q, i) => ({ q, i }))
-
-    .filter(x => answered[x.i] === 'wrong');
+  document.getElementById('review-screen').style.display = 'block';
 
 
 
-  const list = document.getElementById('review-list');
+  const wrongList = QUESTIONS
 
-  if (wrongList.length === 0) {
+    .map((q, i) => ({ q, i }))
 
-    list.innerHTML = '<div class="no-wrong">틀린 문제가 없습니다 야호</div>';
-
-    return;
-
-  }
+    .filter(x => answered[x.i] === 'wrong');
 
 
 
-  list.innerHTML = wrongList.map((x, idx) => `
+  const list = document.getElementById('review-list');
 
-    <div class="review-item">
+  if (wrongList.length === 0) {
 
-      <div class="review-qnum">오답 ${idx + 1}</div>
+    list.innerHTML = '<div class="no-wrong">틀린 문제가 없습니다 야호</div>';
 
-      <div class="review-q">${x.q.q}</div>
+    return;
 
-      <div class="review-meta">
+  }
 
-        <span class="my-ans">내 답: ${userAnswers[x.i]}</span>
 
-        <span class="right-ans">정답: ${Array.isArray(x.q.a) ? x.q.a.join(' / ') : x.q.a}</span>
 
-      </div>
+  list.innerHTML = wrongList.map((x, idx) => `
 
-    </div>
+    <div class="review-item">
 
-  `).join('');
+      <div class="review-qnum">오답 ${idx + 1}</div>
+
+      <div class="review-q">${x.q.q}</div>
+
+      <div class="review-meta">
+
+        <span class="my-ans">내 답: ${userAnswers[x.i]}</span>
+
+        <span class="right-ans">정답: ${Array.isArray(x.q.a) ? x.q.a.join(' / ') : x.q.a}</span>
+
+      </div>
+
+    </div>
+
+  `).join('');
 
 }
 
@@ -1409,9 +1409,9 @@ function showReview() {
 
 function backToResult() {
 
-  document.getElementById('review-screen').style.display = 'none';
+  document.getElementById('review-screen').style.display = 'none';
 
-  document.getElementById('result-screen').style.display = 'block';
+  document.getElementById('result-screen').style.display = 'block';
 
 }
 
@@ -1423,21 +1423,21 @@ document.getElementById('answer-input').addEventListener('keydown', e => { if (e
 
 document.getElementById('btn-prev').addEventListener('click', () => {
 
-  if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; }
+  if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; }
 
-  justSubmitted = false;
+  justSubmitted = false;
 
-  if (current > 0) { current--; render(); }
+  if (current > 0) { current--; render(); }
 
 });
 
 document.getElementById('btn-next').addEventListener('click', () => {
 
-  if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; }
+  if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; }
 
-  justSubmitted = false;
+  justSubmitted = false;
 
-  if (current < QUESTIONS.length - 1) { current++; render(); }
+  if (current < QUESTIONS.length - 1) { current++; render(); }
 
 });
 
@@ -1445,4 +1445,4 @@ document.getElementById('btn-next').addEventListener('click', () => {
 
 </body>
 
-</html> 디버깅 좀 해봐
+</html>
